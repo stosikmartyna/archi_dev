@@ -1,7 +1,9 @@
 import React from 'react';
+import { UserAuthView } from './views/UserAuthView';
+import './App.css';
 
 export const App = () => {
   return (
-    <h1>Hello</h1>
+    <UserAuthView />
   );
 }
