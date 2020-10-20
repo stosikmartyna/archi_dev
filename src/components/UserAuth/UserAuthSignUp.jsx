@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
 import firebase from 'firebase';
-import { useHistory, Link } from 'react-router-dom';
-import { ROUTES } from '../../helpers/routes';
+import { useHistory } from 'react-router-dom';
 
-export const UserAuthSignUp = () => {
+export const UserAuthSignUp = ({ setForm }) => {
     const history = useHistory();
 
     const handleSignUp = useCallback(
@@ -36,9 +35,9 @@ export const UserAuthSignUp = () => {
                 </label>
                 <button type={'submit'}>Sign Up</button>
             </form>
-            <Link to={ROUTES.SIGN_IN}>
+            <span onClick={() => setForm('sign-in')}>
                 I already have an account  
-            </Link>
+            </span>
         </>
     )
 }
