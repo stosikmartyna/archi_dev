@@ -22,22 +22,21 @@ export const UserAuthSignIn = ({ setForm }) => {
     )
 
     return (
-        <>
-            <form onSubmit={handleSignIn}>
-                <h1>Sign In</h1>
-                <label htmlFor={'email'}>
-                    Email
-                    <input id={'email'} type={'text'} />
-                </label>
-                <label htmlFor={'password'}>
-                    Password
-                    <input id={'password'} type={'password'} />
-                </label>
-                <button type={'submit'}>Sign In</button>
-            </form>
+        <form onSubmit={handleSignIn}>
+            <h1>Sign In</h1>
+            <label htmlFor={'email'}>
+                Email
+                <input id={'email'} type={'text'} />
+            </label>
+            <label htmlFor={'password'}>
+                Password
+                <input id={'password'} type={'password'} />
+            </label>
+            <button type={'submit'}>Sign In</button>
+
             <span onClick={() => setForm('sign-up')}>
                 Create account
             </span>
-        </>
+        </form>
     )
 }
