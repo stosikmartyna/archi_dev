@@ -1,5 +1,5 @@
 import { css } from 'emotion';
-import { colors } from '../../helpers/colors';
+import { colors } from '../../constants/colors';
 
 export const container = css({
     background: 'url("img/sign_form.jpg")',
@@ -36,21 +36,21 @@ export const authForm = css({
     },
 
     '& h1': {
-        color: colors.lightGrey,
+        color: colors.foggySky,
         fontWeight: 'lighter',
         marginBottom: '1.5rem',
         textAlign: 'center',
     },
 
     '& label': {
-        color: colors.blueFog,
+        color: colors.foggySky,
         letterSpacing: '.1rem',
     },
 
     '& input': {
         backgroundColor: 'transparent',
         border: 'none',
-        borderBottom: `1px solid ${colors.blueFog}`,
+        borderBottom: `1px solid ${colors.foggySky}`,
         color: '#5e6a72',
         fontSize: '1.1rem',
         letterSpacing: '.1rem',
@@ -61,11 +61,11 @@ export const authForm = css({
     },
 
     '& button': {
-        backgroundColor: colors.blueFog,
+        backgroundColor: colors.foggySky,
         border: 'none',
         borderRadius: '3px',
-        boxShadow: `0px 0px 5px ${colors.lightGrey}`,
-        color: 'white',
+        boxShadow: `0px 0px 5px ${colors.foggySkyLight}`,
+        color: colors.white,
         cursor: 'pointer',
         display: 'block',
         letterSpacing: '.1rem',
@@ -77,18 +77,18 @@ export const authForm = css({
     },
 
         '& button:hover': {
-            backgroundColor: colors.blueFogHover,
+            backgroundColor: colors.foggySkyDark,
             transform: 'translateY(-1px)',
         },
 
     '& span': {
-        color: colors.blueFog,
+        color: colors.foggySky,
         cursor: 'pointer',
         display: 'block',
         letterSpacing: '.1rem',
         textAlign: 'center',
     },
         '& span:hover': {
-            color: colors.blueFogHover,
+            color: colors.foggySkyDark,
         },  
 })

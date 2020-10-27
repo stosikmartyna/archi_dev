@@ -1,30 +1,34 @@
 import { css } from 'emotion';
-import { colors } from '../../helpers/colors';
+import { colors } from '../../constants/colors';
 
 export const navbar = css({
-    backgroundColor: colors.iceBlue,
-    boxShadow: `0px 0px 5px ${colors.lightGrey}`,
+    backgroundColor: colors.foggySkyLight,
+    borderBottom: `1px solid ${colors.foggySky}`,
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '.3rem 0',
+    padding: '.8rem 0',
     width: '100%',
+
+    '& a:hover': {
+        color: colors.nightSkyDark
+    }
+})
+
+export const navbarLink = css({
+    color: colors.nightSky,
+    letterSpacing: '.1rem',
+    paddingLeft: '1.5rem',
+    textDecoration: 'none',
+    textTransform: 'uppercase',
 })
 
 export const navbarUser = css({
-    color: colors.darkSky,
+    color: colors.nightSky,
     fontSize: '.8rem',
     letterSpacing: '.1rem',
-    paddingLeft: '1rem',
+    paddingRight: '1.5rem',
 
     '& span': {
         paddingLeft: '.5rem'
     }
-})
-
-export const link = css({
-    color: colors.darkSky,
-    letterSpacing: '.1rem',
-    paddingRight: '1.8rem',
-    textDecoration: 'none',
-    textTransform: 'uppercase',
 })
