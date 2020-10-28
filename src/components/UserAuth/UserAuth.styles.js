@@ -1,4 +1,5 @@
 import { css } from 'emotion';
+import { colors } from '../../constants/colors';
 
 export const container = css({
     background: 'url("img/sign_form.jpg")',
@@ -35,21 +36,21 @@ export const authForm = css({
     },
 
     '& h1': {
-        color: '#c4ced3',
+        color: colors.foggySky,
         fontWeight: 'lighter',
         marginBottom: '1.5rem',
         textAlign: 'center',
     },
 
     '& label': {
-        color: '#95a7b2',
+        color: colors.foggySky,
         letterSpacing: '.1rem',
     },
 
     '& input': {
         backgroundColor: 'transparent',
         border: 'none',
-        borderBottom: '1px solid #95a7b2',
+        borderBottom: `1px solid ${colors.foggySky}`,
         color: '#5e6a72',
         fontSize: '1.1rem',
         letterSpacing: '.1rem',
@@ -60,11 +61,11 @@ export const authForm = css({
     },
 
     '& button': {
-        backgroundColor: '#95a7b2',
+        backgroundColor: colors.foggySky,
         border: 'none',
         borderRadius: '3px',
-        boxShadow: '0px 0px 5px lightgrey',
-        color: 'white',
+        boxShadow: `0px 0px 5px ${colors.foggySkyLight}`,
+        color: colors.white,
         cursor: 'pointer',
         display: 'block',
         letterSpacing: '.1rem',
@@ -76,18 +77,18 @@ export const authForm = css({
     },
 
         '& button:hover': {
-            backgroundColor: '#8d9ea8',
+            backgroundColor: colors.foggySkyDark,
             transform: 'translateY(-1px)',
         },
 
     '& span': {
-        color: '#95a7b2',
+        color: colors.foggySky,
         cursor: 'pointer',
         display: 'block',
         letterSpacing: '.1rem',
         textAlign: 'center',
     },
         '& span:hover': {
-            color: '#81919b',
+            color: colors.foggySkyDark,
         },  
 })
