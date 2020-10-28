@@ -16,9 +16,14 @@ export const Navbar = () => {
 
     return (
         <div className={navbar}>
-            <Link to={ROUTES.HOME} className={navbarLink}>
-                Home
-            </Link>
+            <div>
+                <Link to={ROUTES.HOME} className={navbarLink}>
+                    Home
+                </Link>
+                <Link to={ROUTES.NEW_APT} className={navbarLink}>
+                    New apt.
+                </Link>
+            </div>
             <div className={navbarUser}>
                 <Icon icon={ic_account_circle} size={22} />
                 <span>{user.email}</span>
