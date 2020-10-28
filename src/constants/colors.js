@@ -4,5 +4,6 @@ export const colors = {
     foggySkyDark: '#8d9ea8',
     nightSky: '#424b51', 
     nightSkyDark: '#031521',
+    red: '#ff0000',
     white: '#ffffff',
 }
