@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import firebase from 'firebase';
 import NumberFormat from 'react-number-format';
 import { form } from './NewApartmentForm.styles';
 
@@ -12,6 +13,7 @@ const initialState = {
 export const NewApartmentForm = () => {
     const [inputsValues, setInputsValues] = useState(initialState);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
 
     const handleInputChange = (event) => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
@@ -25,14 +27,22 @@ export const NewApartmentForm = () => {
             && inputsValues.floor.trim() !== '' 
             && inputsValues.rooms.trim() !== ''
 
-        const validateForm = () => {
-            alert('Sent correctly');
-            setInputsValues(initialState);
-            setIsFormSubmitted(false);
-        }    
+        const postFormValues = async() => {
+            setIsFetching(true);
+            try {
+                await firebase.database().ref('apartments').push(inputsValues);
+                alert('Sent correctly');
+                setInputsValues(initialState);
+                setIsFormSubmitted(false);
+            } catch (err) {
+                alert(err);
+            } finally {
+                setIsFetching(false);
+            }
+        };
         
         setIsFormSubmitted(true);
-        isFormValid && validateForm();
+        isFormValid && postFormValues();
     }
 
     const displayError = (value) => {
@@ -91,7 +101,9 @@ export const NewApartmentForm = () => {
                 />
                 {displayError(inputsValues.rooms)}
                 
-                <button>Submit</button>
+                <button disabled={isFetching}>
+                    {isFetching ? 'Loading...' : 'Submit'}
+                </button>
             </form>
         </>
     )
