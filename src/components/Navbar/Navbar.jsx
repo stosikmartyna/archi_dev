@@ -23,6 +23,9 @@ export const Navbar = () => {
                 <Link to={ROUTES.NEW_APT} className={navbarLink}>
                     New apt.
                 </Link>
+                <Link to={ROUTES.APARTMENTS} className={navbarLink}>
+                    Apartments
+                </Link>
             </div>
             <div className={navbarUser}>
                 <Icon icon={ic_account_circle} size={22} />
