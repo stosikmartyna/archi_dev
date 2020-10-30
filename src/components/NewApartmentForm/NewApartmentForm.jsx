@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from 'firebase';
 import NumberFormat from 'react-number-format';
 import { form } from './NewApartmentForm.styles';
+import { AuthContext } from '../../context/AuthProvider';
 
 const initialState = {
     number: '',
     area: '',
     floor: '',
     rooms: '',
+    created: {user: '', date: ''},
 }
 
 export const NewApartmentForm = () => {
     const [inputsValues, setInputsValues] = useState(initialState);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
+    const {user} = useContext(AuthContext);
 
     const handleInputChange = (event) => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
@@ -30,7 +33,15 @@ export const NewApartmentForm = () => {
         const postFormValues = async() => {
             setIsFetching(true);
             try {
-                await firebase.database().ref('apartments').push(inputsValues);
+                await firebase.database().ref('apartments').push(
+                    {
+                        ...inputsValues,
+                        created: {
+                            user: user.email,
+                            date: new Date().toISOString(),
+                        }
+                    }
+                );
                 alert('Sent correctly');
                 setInputsValues(initialState);
                 setIsFormSubmitted(false);

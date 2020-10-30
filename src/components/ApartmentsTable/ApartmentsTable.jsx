@@ -30,7 +30,7 @@ export const ApartmentsTable = () => {
             <h1>Apartments</h1>
             {apartments.map(apartment => {
                 return (
-                    <li key={apartment.number}>
+                    <li key={apartment.key}>
                         {apartment.number}
                     </li>
                 )
