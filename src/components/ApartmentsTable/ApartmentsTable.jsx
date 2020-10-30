@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import firebase from 'firebase';
+import { table } from './ApartmentsTable.styles';
 
 export const ApartmentsTable = () => {
     const [apartments, setApartments] = useState([]);
@@ -28,13 +29,28 @@ export const ApartmentsTable = () => {
     return (
         <>
             <h1>Apartments</h1>
-            {apartments.map(apartment => {
-                return (
-                    <li key={apartment.key}>
-                        {apartment.number}
-                    </li>
-                )
-            })}
+                <table className={table}>
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Floor</th>
+                            <th>Area (m²)</th>
+                            <th>Rooms</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {apartments.map(apartment => {
+                            return (
+                                <tr key={apartment.key}>
+                                    <td>{apartment.number}</td>
+                                    <td>{apartment.floor}</td>  
+                                    <td>{apartment.area}</td>
+                                    <td>{apartment.rooms}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>            
+                </table>
         </>
     )
 }
