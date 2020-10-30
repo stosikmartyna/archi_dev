@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
-import firebase from 'firebase';
+import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
+import { useApartments } from '../../hooks/useApartments';
 import { form } from './NewApartmentForm.styles';
-import { AuthContext } from '../../context/AuthProvider';
 
 const initialState = {
     number: '',
@@ -15,8 +14,7 @@ const initialState = {
 export const NewApartmentForm = () => {
     const [inputsValues, setInputsValues] = useState(initialState);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-    const [isFetching, setIsFetching] = useState(false);
-    const {user} = useContext(AuthContext);
+    const {postFormValues, isFetching} = useApartments();
 
     const handleInputChange = (event) => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
@@ -29,31 +27,14 @@ export const NewApartmentForm = () => {
             && inputsValues.area.trim() !== ''
             && inputsValues.floor.trim() !== '' 
             && inputsValues.rooms.trim() !== ''
-
-        const postFormValues = async() => {
-            setIsFetching(true);
-            try {
-                await firebase.database().ref('apartments').push(
-                    {
-                        ...inputsValues,
-                        created: {
-                            user: user.email,
-                            date: new Date().toISOString(),
-                        }
-                    }
-                );
-                alert('Sent correctly');
-                setInputsValues(initialState);
-                setIsFormSubmitted(false);
-            } catch (err) {
-                alert(err);
-            } finally {
-                setIsFetching(false);
-            }
-        };
         
+        const clearForm = () => {
+            setInputsValues(initialState) 
+            setIsFormSubmitted(false)
+        }
+
         setIsFormSubmitted(true);
-        isFormValid && postFormValues();
+        isFormValid && postFormValues(inputsValues) && clearForm();
     }
 
     const displayError = (value) => {
