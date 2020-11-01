@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useApartments } from '../../hooks/useApartments';
 import { form } from './NewApartmentForm.styles';
+import { NewApartmentsFormClient } from './NewApartmentFormClient';
 
 const initialState = {
     number: '',
     area: '',
     floor: '',
     rooms: '',
+    status: 'Available',
     created: {user: '', date: ''},
+    contract: '',
+    client: {
+        name: '',
+        email: '',
+        phone: '',
+    }
 }
 
 export const NewApartmentForm = () => {
@@ -18,6 +26,16 @@ export const NewApartmentForm = () => {
 
     const handleInputChange = (event) => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
+    }
+
+    const handleClientInputChange = (event) => {
+        setInputsValues({
+            ...inputsValues, 
+            client: {
+                ...inputsValues.client,
+                [event.target.id]: event.target.value
+            }
+        })
     }
 
     const submitForm = (event) => {
@@ -93,6 +111,21 @@ export const NewApartmentForm = () => {
                 />
                 {displayError(inputsValues.rooms)}
                 
+                <label htmlFor='status'>Status</label>
+                <select id={'status'} value={inputsValues.status} onChange={handleInputChange}>
+                    <option value={'Available'}>Available</option>
+                    <option value={'Reserved'}>Reserved</option>
+                    <option value={'Unavailable'}>Unavailable</option>
+                </select>
+
+                {inputsValues.status !== 'Available' && (
+                    <NewApartmentsFormClient 
+                        inputsValues={inputsValues} 
+                        onInputChange={handleInputChange} 
+                        onClientInputChange={handleClientInputChange} 
+                    />
+                )}
+
                 <button disabled={isFetching}>
                     {isFetching ? 'Loading...' : 'Submit'}
                 </button>

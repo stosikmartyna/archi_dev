@@ -20,6 +20,7 @@ export const ApartmentsTable = () => {
                         <th>Floor</th>
                         <th>Area (m²)</th>
                         <th>Rooms</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,7 @@ export const ApartmentsTable = () => {
                                 <td>{apartment.floor}</td>  
                                 <td>{apartment.area}</td>
                                 <td>{apartment.rooms}</td>
+                                <td>{apartment.status}</td>
                             </tr>
                         )
                     })}
