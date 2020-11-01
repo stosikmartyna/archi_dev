@@ -24,6 +24,8 @@ export const NewApartmentForm = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const {postFormValues, isFetching} = useApartments();
 
+    const isFormExtended = inputsValues.status !== 'Available';
+
     const handleInputChange = (event) => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
     }
@@ -46,13 +48,20 @@ export const NewApartmentForm = () => {
             && inputsValues.floor.trim() !== '' 
             && inputsValues.rooms.trim() !== ''
         
+        const isClientFormValid = inputsValues.contract !== ''
+            && inputsValues.client.name.trim() !== ''
+            && inputsValues.client.email.trim() !== ''
+            && inputsValues.client.phone.trim() !== ''
+
         const clearForm = () => {
             setInputsValues(initialState) 
             setIsFormSubmitted(false)
         }
 
         setIsFormSubmitted(true);
-        isFormValid && postFormValues(inputsValues) && clearForm();
+        isFormExtended
+            ? isFormValid && isClientFormValid && postFormValues(inputsValues) && clearForm()
+            : isFormValid && postFormValues(inputsValues) && clearForm()
     }
 
     const displayError = (value) => {
@@ -118,11 +127,12 @@ export const NewApartmentForm = () => {
                     <option value={'Unavailable'}>Unavailable</option>
                 </select>
 
-                {inputsValues.status !== 'Available' && (
+                {isFormExtended && (
                     <NewApartmentsFormClient 
                         inputsValues={inputsValues} 
                         onInputChange={handleInputChange} 
                         onClientInputChange={handleClientInputChange} 
+                        displayError={displayError}
                     />
                 )}
 
