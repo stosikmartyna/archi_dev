@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState } from 'react';
-import firebase from 'firebase';
 import { AuthContext } from '../context/AuthProvider';
+import firebase from 'firebase';
 
 export const useApartments = () => {
     const [isFetching, setIsFetching] = useState(false);
@@ -28,21 +28,24 @@ export const useApartments = () => {
         }
     };
 
-    const getApartments = useCallback(() => {
-        firebase.database().ref('apartments')
-            .once('value')
-            .then(snapshot => {
-                const data = [];
-                // map object entries to get array instead of nested objects from firebase
-                snapshot.forEach((child => {
-                    const item = child.val();
-                    item.key = child.key;
-                    
-                    data.push(item);
-                }));
-                setApartments(data);
-            })
-            .catch(err => console.warn(err.message));
+    const getApartments = useCallback(async () => {
+        setIsFetching(true);
+        try {
+            const response = await firebase.database().ref('apartments').once('value')
+            const data = [];
+            // map object entries to get array instead of nested objects from firebase
+            response.forEach((element => {
+                const item = element.val();
+                item.key = element.key;
+                
+                data.push(item);
+            }));
+            setApartments(data);
+        } catch (err) {
+            console.warn(err.message);
+        } finally {
+            setIsFetching(false);
+        }
     }, []);
 
     return {

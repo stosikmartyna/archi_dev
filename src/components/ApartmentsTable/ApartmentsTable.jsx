@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useApartments } from '../../hooks/useApartments';
+import { Spinner } from '../Spinner/Spinner';
 import { table } from './ApartmentsTable.styles';
 
 export const ApartmentsTable = () => {
-    const {getApartments, apartments} = useApartments();
+    const {getApartments, apartments, isFetching} = useApartments();
 
     useEffect(() => {
         getApartments();
@@ -34,6 +35,7 @@ export const ApartmentsTable = () => {
                     })}
                 </tbody>            
             </table>
+            {isFetching && <Spinner />}
         </>
     )
 }
