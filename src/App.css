@@ -1,6 +1,7 @@
 body {
     font-family: 'Ubuntu';
     margin: 0;
+    min-width: 1000px;
     padding: 0;
 }
 

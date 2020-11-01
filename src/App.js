@@ -25,7 +25,7 @@ export const App = () => {
           {user ? <ApartmentsTable /> : <Redirect to={ROUTES.SIGN_IN} />}
         </Route>
         <Route path={ROUTES.SIGN_IN}>
-          {!user ? <UserAuth /> : <Redirect to={ROUTES.HOME} />}
+          {!user ? <UserAuth /> : <Redirect to={ROUTES.NEW_APT} />}
         </Route>
       </Switch>
     </>

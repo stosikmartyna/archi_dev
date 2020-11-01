@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useApartments } from '../../hooks/useApartments';
-import { form } from './NewApartmentForm.styles';
+import { formContainer, apartmentFormInputs, inputElements, imageContainer } from './NewApartmentForm.styles';
 import { NewApartmentsFormClient } from './NewApartmentFormClient';
 
 const initialState = {
@@ -74,59 +74,66 @@ export const NewApartmentForm = () => {
 
     return (
         <>
-            <h1>New apartment</h1>
-            <form className={form} onSubmit={submitForm}>
-                <label htmlFor='number'>Number</label>
-                <NumberFormat 
-                    id={'number'}
-                    value={inputsValues.number} 
-                    onChange={handleInputChange}
-                    allowNegative={false}
-                    autoComplete={'off'}
-                    decimalScale={0}
-                />
-                {displayError(inputsValues.number)}
-            
-                <label htmlFor='floor'>Floor</label>
-                <NumberFormat 
-                    id={'floor'}
-                    value={inputsValues.floor} 
-                    onChange={handleInputChange}
-                    allowNegative={false}
-                    autoComplete={'off'}
-                    decimalScale={0}
-                />
-                {displayError(inputsValues.floor)}
-                
-                <label htmlFor='area'>Area (m²)</label>
-                <NumberFormat
-                    id={'area'}
-                    value={inputsValues.area} 
-                    onChange={handleInputChange}
-                    allowNegative={false}
-                    autoComplete={'off'}
-                    decimalScale={2}
-                />
-                {displayError(inputsValues.area)}
-                
-                <label htmlFor='rooms'>Rooms N°</label>
-                <NumberFormat 
-                    id={'rooms'}
-                    value={inputsValues.rooms}
-                    onChange={handleInputChange}
-                    allowNegative={false}
-                    autoComplete={'off'}
-                    decimalScale={0}
-                />
-                {displayError(inputsValues.rooms)}
-                
-                <label htmlFor='status'>Status</label>
-                <select id={'status'} value={inputsValues.status} onChange={handleInputChange}>
-                    <option value={'Available'}>Available</option>
-                    <option value={'Reserved'}>Reserved</option>
-                    <option value={'Unavailable'}>Unavailable</option>
-                </select>
-
+            <form className={formContainer} onSubmit={submitForm}>
+                <h1>New apartment</h1>
+                <div className={apartmentFormInputs}>
+                    <div className={inputElements}>
+                        <label htmlFor='number'>Number</label>
+                        <NumberFormat 
+                            id={'number'}
+                            value={inputsValues.number} 
+                            onChange={handleInputChange}
+                            allowNegative={false}
+                            autoComplete={'off'}
+                            decimalScale={0}
+                        />
+                        {displayError(inputsValues.number)}
+                    </div>
+                    <div className={inputElements}>
+                        <label htmlFor='floor'>Floor</label>
+                        <NumberFormat 
+                            id={'floor'}
+                            value={inputsValues.floor} 
+                            onChange={handleInputChange}
+                            allowNegative={false}
+                            autoComplete={'off'}
+                            decimalScale={0}
+                        />
+                        {displayError(inputsValues.floor)}
+                    </div>
+                    <div className={inputElements}>
+                        <label htmlFor='area'>Area (m²)</label>
+                        <NumberFormat
+                            id={'area'}
+                            value={inputsValues.area} 
+                            onChange={handleInputChange}
+                            allowNegative={false}
+                            autoComplete={'off'}
+                            decimalScale={2}
+                        />
+                        {displayError(inputsValues.area)}
+                    </div>
+                    <div className={inputElements}>
+                        <label htmlFor='rooms'>Rooms N°</label>
+                        <NumberFormat 
+                            id={'rooms'}
+                            value={inputsValues.rooms}
+                            onChange={handleInputChange}
+                            allowNegative={false}
+                            autoComplete={'off'}
+                            decimalScale={0}
+                        />
+                        {displayError(inputsValues.rooms)}
+                    </div>
+                    <div className={inputElements}>
+                        <label htmlFor='status'>Status</label>
+                        <select id={'status'} value={inputsValues.status} onChange={handleInputChange}>
+                            <option value={'Available'}>Available</option>
+                            <option value={'Reserved'}>Reserved</option>
+                            <option value={'Unavailable'}>Unavailable</option>
+                        </select>
+                    </div>
+                </div>
                 {isFormExtended && (
                     <NewApartmentsFormClient 
                         inputsValues={inputsValues} 
@@ -135,11 +142,12 @@ export const NewApartmentForm = () => {
                         displayError={displayError}
                     />
                 )}
-
+                
                 <button disabled={isFetching}>
                     {isFetching ? 'Loading...' : 'Submit'}
                 </button>
             </form>
+            <div className={imageContainer}/>
         </>
     )
 }
