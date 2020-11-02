@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import NumberFormat from 'react-number-format';
 import { useApartments } from '../../hooks/useApartments';
-import { formContainer, apartmentFormInputs, inputElements, imageContainer } from './NewApartmentForm.styles';
+import { InputNumber } from '../../uiComponents/InputNumber';
+import { InputSelect } from '../../uiComponents/InputSelect';
+import { formContainer, apartmentFormInputs, imageContainer } from './NewApartmentForm.styles';
 import { NewApartmentsFormClient } from './NewApartmentFormClient';
 
 const initialState = {
@@ -72,67 +73,64 @@ export const NewApartmentForm = () => {
         }
     }
 
+    const validateForm = (value) => {
+        return isFormSubmitted && value.trim() === '';
+    }
+
+    const statusOptions = [
+        {value: 'Available', name: 'Available'},
+        {value: 'Reserved', name: 'Reserved'},
+        {value: 'Unavailable', name: 'Unavailable'},
+    ]
+
     return (
         <>
             <form className={formContainer} onSubmit={submitForm}>
                 <h1>New apartment</h1>
                 <div className={apartmentFormInputs}>
-                    <div className={inputElements}>
-                        <label htmlFor='number'>Number</label>
-                        <NumberFormat 
-                            id={'number'}
-                            value={inputsValues.number} 
-                            onChange={handleInputChange}
-                            allowNegative={false}
-                            autoComplete={'off'}
-                            decimalScale={0}
-                        />
-                        {displayError(inputsValues.number)}
-                    </div>
-                    <div className={inputElements}>
-                        <label htmlFor='floor'>Floor</label>
-                        <NumberFormat 
-                            id={'floor'}
-                            value={inputsValues.floor} 
-                            onChange={handleInputChange}
-                            allowNegative={false}
-                            autoComplete={'off'}
-                            decimalScale={0}
-                        />
-                        {displayError(inputsValues.floor)}
-                    </div>
-                    <div className={inputElements}>
-                        <label htmlFor='area'>Area (m²)</label>
-                        <NumberFormat
-                            id={'area'}
-                            value={inputsValues.area} 
-                            onChange={handleInputChange}
-                            allowNegative={false}
-                            autoComplete={'off'}
-                            decimalScale={2}
-                        />
-                        {displayError(inputsValues.area)}
-                    </div>
-                    <div className={inputElements}>
-                        <label htmlFor='rooms'>Rooms N°</label>
-                        <NumberFormat 
-                            id={'rooms'}
-                            value={inputsValues.rooms}
-                            onChange={handleInputChange}
-                            allowNegative={false}
-                            autoComplete={'off'}
-                            decimalScale={0}
-                        />
-                        {displayError(inputsValues.rooms)}
-                    </div>
-                    <div className={inputElements}>
-                        <label htmlFor='status'>Status</label>
-                        <select id={'status'} value={inputsValues.status} onChange={handleInputChange}>
-                            <option value={'Available'}>Available</option>
-                            <option value={'Reserved'}>Reserved</option>
-                            <option value={'Unavailable'}>Unavailable</option>
-                        </select>
-                    </div>
+                    <InputNumber 
+                        label={'Number'}
+                        id={'number'}
+                        value={inputsValues.number}
+                        onChange={handleInputChange}
+                        decimalScale={0}
+                        error={validateForm(inputsValues.number)}
+                    />
+
+                    <InputNumber 
+                        label={'Floor'}
+                        id={'floor'}
+                        value={inputsValues.floor}
+                        onChange={handleInputChange}
+                        decimalScale={0}
+                        error={validateForm(inputsValues.floor)}
+                    />
+
+                    <InputNumber 
+                        label={'Area (m²)'}
+                        id={'area'}
+                        value={inputsValues.area}
+                        onChange={handleInputChange}
+                        decimalScale={2}
+                        error={validateForm(inputsValues.area)}
+                    />
+
+                    <InputNumber 
+                        label={'Rooms N°'}
+                        id={'rooms'}
+                        value={inputsValues.rooms}
+                        onChange={handleInputChange}
+                        decimalScale={0}
+                        error={validateForm(inputsValues.rooms)}
+                    />
+
+                    <InputSelect 
+                        label={'Status'}
+                        id={'status'}
+                        value={inputsValues.status}
+                        onChange={handleInputChange}
+                        options={statusOptions}
+                    />
                 </div>
                 {isFormExtended && (
                     <NewApartmentsFormClient 
