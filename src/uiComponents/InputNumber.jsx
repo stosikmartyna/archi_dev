@@ -5,7 +5,7 @@ import { colors } from '../constants/colors';
 
 export const InputNumber = (props) => {
     const styles = css({
-        width: '105px',
+        minWidth: '105px',
     
         '& label': {
             color: colors.foggySky,

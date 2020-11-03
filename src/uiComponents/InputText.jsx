@@ -2,28 +2,28 @@ import React from 'react';
 import { css } from 'emotion';
 import { colors } from '../constants/colors';
 
-export const InputSelect = (props) => {
+export const InputText = (props) => {
     const styles = css({
-        width: '105px',
-    
+        marginBottom: '1rem',
+
         '& label': {
             color: colors.foggySky,
             letterSpacing: '.1rem',
         },
-    
-        '& select': {
+
+        '& input': {
             backgroundColor: 'transparent',
             border: 'none',
             borderBottom: `1px solid ${colors.foggySky}`,
             color: colors.nightSky,
-            fontFamily: 'Ubuntu',
-            fontSize: '1rem',
             display: 'block',
+            fontSize: '1.1rem',
+            letterSpacing: '.1rem',
             outline: 'none',
             padding: '.5rem 0',
-            width: `${props.width}px`,
+            width: '250px',
         },
-    
+
         '& span': {
             color: colors.red,
             fontSize: '.7rem',
@@ -33,11 +33,7 @@ export const InputSelect = (props) => {
     return (
         <div className={styles}>
             <label htmlFor={props.id}>{props.label}</label>
-            <select id={props.id} value={props.value} onChange={props.onChange} width={props.width}>
-                {props.options.map(option => {
-                    return <option value={option.value}>{option.name}</option>
-                })}
-            </select>
+            <input id={props.id} type={props.type} value={props.value} onChange={props.onChange} autoComplete={'off'} />
             {props.error && <span>This field is required</span>}
         </div>
     )

@@ -66,14 +66,6 @@ export const NewApartmentForm = () => {
             : isFormValid && postFormValues(inputsValues) && clearForm()
     }
 
-    const displayError = (value) => {
-        const isNotValid = isFormSubmitted && value.trim() === '';
-
-        if (isNotValid) {
-            return <span>This field is required</span>
-        }
-    }
-
     const validateForm = (value) => {
         return isFormSubmitted && value.trim() === '';
     }
@@ -82,6 +74,13 @@ export const NewApartmentForm = () => {
         {value: 'Available', name: 'Available'},
         {value: 'Reserved', name: 'Reserved'},
         {value: 'Unavailable', name: 'Unavailable'},
+    ]
+
+    const contractOptions = [
+        {value: '', name: ''},
+        {value: 'Renting', name: 'Renting'},
+        {value: 'Buying', name: 'Buying'},
+        {value: 'Long lease', name: 'Long lease'},
     ]
 
     return (
@@ -137,8 +136,9 @@ export const NewApartmentForm = () => {
                     <NewApartmentsFormClient 
                         inputsValues={inputsValues} 
                         onInputChange={handleInputChange} 
-                        onClientInputChange={handleClientInputChange} 
-                        displayError={displayError}
+                        onClientInputChange={handleClientInputChange}
+                        validateForm={validateForm}
+                        contractOptions={contractOptions}
                     />
                 )}
                 <Button disabled={isFetching}>

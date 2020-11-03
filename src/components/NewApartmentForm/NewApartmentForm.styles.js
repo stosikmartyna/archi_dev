@@ -18,6 +18,10 @@ export const apartmentFormInputs = css({
     margin: '0 2rem',
 })
 
+export const clientFormInputs = css({
+    margin: '0 2rem',
+})
+
 export const imageContainer = css({
     background: 'url("img/new_apartment_form.jpg")',
     backgroundSize: 'cover',
