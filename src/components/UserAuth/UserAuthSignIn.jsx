@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../uiComponents/Button';
+import { InputText } from '../../uiComponents/InputText';
 
 export const UserAuthSignIn = ({ setForm }) => {
     const history = useHistory();
@@ -25,14 +26,16 @@ export const UserAuthSignIn = ({ setForm }) => {
     return (
         <form onSubmit={handleSignIn}>
             <h1>Sign In</h1>
-            <label htmlFor={'email'}>
-                Email
-                <input id={'email'} type={'text'} />
-            </label>
-            <label htmlFor={'password'}>
-                Password
-                <input id={'password'} type={'password'} />
-            </label>
+            <InputText 
+                id={'email'}
+                label={'Email'}
+                type={'text'}
+            />
+            <InputText 
+                id={'password'}
+                label={'Password'}
+                type={'password'}
+            />
             <Button type={'submit'}>
                 Sign In
             </Button>
