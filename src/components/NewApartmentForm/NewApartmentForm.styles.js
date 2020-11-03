@@ -9,28 +9,7 @@ export const formContainer = css({
         letterSpacing: '.2rem',
         margin: '1.5rem',
         textAlign: 'center'
-    },
-
-    '& button': {
-        backgroundColor: colors.foggySky,
-        border: 'none',
-        borderRadius: '3px',
-        boxShadow: `0px 0px 5px ${colors.foggySkyLight}`,
-        color: colors.white,
-        cursor: 'pointer',
-        display: 'block',
-        letterSpacing: '.1rem',
-        margin: '1rem auto',
-        outline: 'none',
-        padding: '.4rem .7rem',
-        textTransform: 'uppercase',
-        transition: 'all 0.3s ease 0s',
-    },
-
-        '& button:hover': {
-            backgroundColor: colors.foggySkyDark,
-            transform: 'translateY(-1px)',
-        },
+    }
 })
 
 export const apartmentFormInputs = css({

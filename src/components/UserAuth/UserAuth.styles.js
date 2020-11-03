@@ -60,27 +60,6 @@ export const authForm = css({
         width: '100%',
     },
 
-    '& button': {
-        backgroundColor: colors.foggySky,
-        border: 'none',
-        borderRadius: '3px',
-        boxShadow: `0px 0px 5px ${colors.foggySkyLight}`,
-        color: colors.white,
-        cursor: 'pointer',
-        display: 'block',
-        letterSpacing: '.1rem',
-        margin: '0 auto 1rem',
-        outline: 'none',
-        padding: '.4rem .7rem',
-        textTransform: 'uppercase',
-        transition: 'all 0.3s ease 0s',
-    },
-
-        '& button:hover': {
-            backgroundColor: colors.foggySkyDark,
-            transform: 'translateY(-1px)',
-        },
-
     '& span': {
         color: colors.foggySky,
         cursor: 'pointer',

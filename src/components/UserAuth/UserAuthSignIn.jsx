@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
+import { Button } from '../../uiComponents/Button';
 
 export const UserAuthSignIn = ({ setForm }) => {
     const history = useHistory();
@@ -32,8 +33,9 @@ export const UserAuthSignIn = ({ setForm }) => {
                 Password
                 <input id={'password'} type={'password'} />
             </label>
-            <button type={'submit'}>Sign In</button>
-
+            <Button type={'submit'}>
+                Sign In
+            </Button>
             <span onClick={() => setForm('sign-up')}>
                 Create account
             </span>

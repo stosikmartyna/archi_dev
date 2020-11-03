@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApartments } from '../../hooks/useApartments';
+import { Button } from '../../uiComponents/Button';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { formContainer, apartmentFormInputs, imageContainer } from './NewApartmentForm.styles';
@@ -140,10 +141,9 @@ export const NewApartmentForm = () => {
                         displayError={displayError}
                     />
                 )}
-                
-                <button disabled={isFetching}>
+                <Button disabled={isFetching}>
                     {isFetching ? 'Loading...' : 'Submit'}
-                </button>
+                </Button>
             </form>
             <div className={imageContainer}/>
         </>
