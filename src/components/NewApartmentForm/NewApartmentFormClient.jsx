@@ -42,7 +42,7 @@ export const NewApartmentsFormClient = ({ inputsValues, onInputChange, onClientI
                     onChange={onInputChange}
                     options={contractOptions}
                     error={validateForm(inputsValues.contract)}
-                    width={'255'}
+                    width={255}
                 />
             </div>
         </>

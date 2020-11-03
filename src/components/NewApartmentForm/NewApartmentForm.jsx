@@ -3,7 +3,7 @@ import { useApartments } from '../../hooks/useApartments';
 import { Button } from '../../uiComponents/Button';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
-import { formContainer, apartmentFormInputs, imageContainer } from './NewApartmentForm.styles';
+import { container, formContainer, apartmentFormInputs, imageContainer } from './NewApartmentForm.styles';
 import { NewApartmentsFormClient } from './NewApartmentFormClient';
 
 const initialState = {
@@ -84,7 +84,7 @@ export const NewApartmentForm = () => {
     ]
 
     return (
-        <>
+        <div className={container}>
             <form className={formContainer} onSubmit={submitForm}>
                 <h1>New apartment</h1>
                 <div className={apartmentFormInputs}>
@@ -145,7 +145,7 @@ export const NewApartmentForm = () => {
                     {isFetching ? 'Loading...' : 'Submit'}
                 </Button>
             </form>
-            <div className={imageContainer}/>
-        </>
+            <div className={imageContainer} />
+        </div>
     )
 }

@@ -33,9 +33,9 @@ export const InputSelect = (props) => {
     return (
         <div className={styles}>
             <label htmlFor={props.id}>{props.label}</label>
-            <select id={props.id} value={props.value} onChange={props.onChange} width={props.width}>
+            <select id={props.id} value={props.value} onChange={props.onChange}>
                 {props.options.map(option => {
-                    return <option value={option.value}>{option.name}</option>
+                    return <option value={option.value} key={option.value}>{option.name}</option>
                 })}
             </select>
             {props.error && <span>This field is required</span>}
