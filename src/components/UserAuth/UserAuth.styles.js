@@ -35,13 +35,6 @@ export const authForm = css({
         width: '50%',
     },
 
-    '& h1': {
-        color: colors.foggySky,
-        fontWeight: 'lighter',
-        marginBottom: '1.5rem',
-        textAlign: 'center',
-    },
-
     '& label': {
         color: colors.foggySky,
         letterSpacing: '.1rem',

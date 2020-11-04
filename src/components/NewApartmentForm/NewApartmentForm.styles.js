@@ -9,13 +9,6 @@ export const formContainer = css({
     margin: 'auto 0',
     width: '50%',
     zIndex: '1',
-
-    '& h1': {
-        color: colors.nightSky,
-        letterSpacing: '.2rem',
-        margin: '1.5rem',
-        textAlign: 'center'
-    }
 })
 
 export const apartmentFormInputs = css({

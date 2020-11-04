@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApartments } from '../../hooks/useApartments';
+import { Header } from '../../uiComponents/Header';
 import { Spinner } from '../Spinner/Spinner';
 import { table } from './ApartmentsTable.styles';
 
@@ -12,7 +13,7 @@ export const ApartmentsTable = () => {
 
     return (
         <>
-            <h1>Apartments</h1>
+            <Header size={'medium'} margin={'1.5'}>Apartments</Header>
             <table className={table}>
                 <thead>
                     <tr>

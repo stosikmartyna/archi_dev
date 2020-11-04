@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../uiComponents/Button';
 import { InputText } from '../../uiComponents/InputText';
+import { Header } from '../../uiComponents/Header';
 
 export const UserAuthSignIn = ({ setForm }) => {
     const history = useHistory();
@@ -25,7 +26,7 @@ export const UserAuthSignIn = ({ setForm }) => {
 
     return (
         <form onSubmit={handleSignIn}>
-            <h1>Sign In</h1>
+            <Header size={'medium'} margin={'1.5'}>Sign In</Header>
             <InputText 
                 id={'email'}
                 label={'Email'}

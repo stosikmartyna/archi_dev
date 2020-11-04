@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { NewApartmentForm } from './components/NewApartmentForm/NewApartmentForm';
 import { ApartmentsTable } from './components/ApartmentsTable/ApartmentsTable';
 import { UserAuth } from './components/UserAuth/UserAuth';
+import { Header } from './uiComponents/Header';
 import './App.css';
 
 export const App = () => {
@@ -16,7 +17,7 @@ export const App = () => {
       {user && <Navbar user={user} />}
       <Switch>
         <Route exact path={ROUTES.HOME}>
-          {user ? <h1>Hello</h1> : <Redirect to={ROUTES.SIGN_IN} />}
+          {user ? <Header size={'medium'} margin={'1.5'}>ArchiDev</Header> : <Redirect to={ROUTES.SIGN_IN} />}
         </Route>
         <Route path={ROUTES.NEW_APT}>
           {user ? <NewApartmentForm /> : <Redirect to={ROUTES.SIGN_IN} />}

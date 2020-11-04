@@ -2,9 +2,9 @@ import { css } from 'emotion';
 import { colors } from '../../constants/colors';
 
 export const navbar = css({
-    backgroundColor: colors.foggySkyLight,
-    borderBottom: `1px solid ${colors.foggySky}`,
+    boxShadow: '0 0 5px lightgrey',
     display: 'flex',
+    fontFamily: 'Montserrat',
     justifyContent: 'space-between',
     padding: '.8rem 0',
     width: '100%',

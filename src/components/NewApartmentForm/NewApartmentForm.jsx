@@ -5,6 +5,7 @@ import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { container, formContainer, apartmentFormInputs, imageContainer } from './NewApartmentForm.styles';
 import { NewApartmentsFormClient } from './NewApartmentFormClient';
+import { Header } from '../../uiComponents/Header';
 
 const initialState = {
     number: '',
@@ -86,7 +87,7 @@ export const NewApartmentForm = () => {
     return (
         <div className={container}>
             <form className={formContainer} onSubmit={submitForm}>
-                <h1>New apartment</h1>
+                <Header size={'medium'} margin={'1.5'}>New apartment</Header>
                 <div className={apartmentFormInputs}>
                     <InputNumber 
                         label={'Number'}

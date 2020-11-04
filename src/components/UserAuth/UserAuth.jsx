@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import { Header } from '../../uiComponents/Header';
 import { authForm, container } from './UserAuth.styles';
 import { UserAuthSignIn } from './UserAuthSignIn';
 import { UserAuthSignUp } from './UserAuthSignUp';
@@ -8,7 +9,9 @@ export const UserAuth = () => {
 
     return (
         <div className={container}>
-            <h1>ArchiDev</h1>
+            <Header size={'large'} fontWeight={900}>
+                ArchiDev
+            </Header>
             <div className={authForm}>
                 {form === 'sign-in'
                     ? <UserAuthSignIn setForm={setForm} />

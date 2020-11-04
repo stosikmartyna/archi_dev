@@ -2,11 +2,12 @@ import React from 'react';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { InputText } from '../../uiComponents/InputText';
 import { clientFormInputs } from './NewApartmentForm.styles';
+import { Header } from '../../uiComponents/Header';
 
 export const NewApartmentsFormClient = ({ inputsValues, onInputChange, onClientInputChange, validateForm, contractOptions }) => {
     return (
         <>               
-            <h1>Client</h1>
+            <Header size={'medium'} margin={'1.5'}>Client</Header>
             <div className={clientFormInputs}>
                 <InputText 
                     id={'name'}

@@ -13,3 +13,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Ubuntu';
     src: local('Ubuntu'), url('../src/fonts/Ubuntu.ttf');
 }
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url('../src/fonts/Montserrat.ttf');
+}
