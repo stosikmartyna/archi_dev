@@ -5,9 +5,7 @@ export const container = css({
     background: 'url("img/sign_form.jpg")',
     backgroundSize: 'cover',
     minHeight: '100vh',
-    position: 'relative',
-    width: '100%',
-    
+
     '&:after': {
         borderTop: '100vh solid rgba(255, 255, 255, 0.95)',
         borderLeft: '120px solid transparent',
@@ -17,6 +15,21 @@ export const container = css({
         top: 0,
         width: '34%',
     },
+})
+
+export const appHeader = css({
+    color: '#3e4654',
+    fontFamily: 'Montserrat',
+    fontSize: '5rem',
+    marginTop: '6rem',
+    position: 'absolute',
+    textAlign: 'center',
+    width: '100%',
+    zIndex: 1,      
+    
+    '& span': {
+        color: '#425472',
+    }
 })
 
 export const authForm = css({
