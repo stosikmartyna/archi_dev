@@ -1,20 +1,27 @@
 import { css } from 'emotion';
 import { colors } from '../../constants/colors';
 
-export const apartmentsSwitch = css({
+export const tabs = css({
     display: 'flex',
     justifyContent: 'space-evenly',
     margin: '0 auto 1.5rem',
     width: '30%',
-        '& span': {
-            color: colors.nightSky,
-            cursor: 'pointer',
-            fontSize: '1.2rem',
+})
 
-            '&:hover': {
-                color: colors.nightSkyDark,
-            }
-        }
+export const tab = css({
+    color: colors.nightSky,
+    cursor: 'pointer',
+    fontSize: '1.2rem',
+
+    '&:hover': {
+        color: colors.nightSkyDark,
+    }
+})
+
+export const activeTab = css({
+    color: 'blue',
+    cursor: 'pointer',
+    fontSize: '1.2rem',
 })
 
 export const table = css({

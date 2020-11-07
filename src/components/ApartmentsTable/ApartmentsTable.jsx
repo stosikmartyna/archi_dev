@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useApartments } from '../../hooks/useApartments';
 import { Header } from '../../uiComponents/Header';
 import { Spinner } from '../Spinner/Spinner';
-import { apartmentsSwitch, table } from './ApartmentsTable.styles';
+import { tabs, tab, activeTab, table } from './ApartmentsTable.styles';
 
 export const ApartmentsTable = () => {
     const {getApartments, apartments, filterApartments, filteredApartments, isFetching} = useApartments();
-    const [activeFilter, setActiveFilter] = useState();
+    const [activeFilter, setActiveFilter] = useState('Available');
 
     useEffect(() => {
-        getApartments();
+        getApartments(activeFilter); 
     }, [getApartments])
 
     const getByStatus = (status) => {
@@ -20,13 +20,17 @@ export const ApartmentsTable = () => {
 
     const isTableExtended = activeFilter !== 'Available';
     
+    const getTabClassName = (status) => {
+        return status === activeFilter ? activeTab : tab
+    }
+
     return (
         <>
             <Header size={'medium'} margin={'1.5'}>Apartments</Header>
-            <div className={apartmentsSwitch}>
-                <span onClick={() => getByStatus('Available')}>Available</span>
-                <span onClick={() => getByStatus('Unavailable')}>Unavailable</span>
-                <span onClick={() => getByStatus('Reserved')}>Reserved</span>
+            <div className={tabs}>
+                <span className={getTabClassName('Available')} onClick={() => getByStatus('Available')}>Available</span>
+                <span className={getTabClassName('Unavailable')} onClick={() => getByStatus('Unavailable')}>Unavailable</span>
+                <span className={getTabClassName('Reserved')} onClick={() => getByStatus('Reserved')}>Reserved</span>
             </div>
             <table className={table}>
                 <thead>

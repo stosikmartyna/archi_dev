@@ -29,7 +29,7 @@ export const useApartments = () => {
         }
     };
 
-    const getApartments = useCallback(async () => {
+    const getApartments = useCallback(async (defaultFilter) => {
         setIsFetching(true);
         try {
             const response = await firebase.database().ref('apartments').once('value')
@@ -42,7 +42,9 @@ export const useApartments = () => {
                 data.push(item);
             }));
             setApartments(data);
-            setFilteredApartments(data);
+
+            const filteredData = data.filter(data => data.status === defaultFilter);
+            setFilteredApartments(filteredData);
         } catch (err) {
             console.warn(err.message);
         } finally {
