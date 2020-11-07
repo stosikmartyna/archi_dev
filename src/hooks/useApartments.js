@@ -5,6 +5,7 @@ import firebase from 'firebase';
 export const useApartments = () => {
     const [isFetching, setIsFetching] = useState(false);
     const [apartments, setApartments] = useState([]);
+    const [filteredApartments, setFilteredApartments] = useState([]);
     const {user} = useContext(AuthContext);
 
     const postFormValues = async (values) => {
@@ -41,6 +42,7 @@ export const useApartments = () => {
                 data.push(item);
             }));
             setApartments(data);
+            setFilteredApartments(data);
         } catch (err) {
             console.warn(err.message);
         } finally {
@@ -51,7 +53,9 @@ export const useApartments = () => {
     return {
         isFetching,
         apartments,
+        filteredApartments,
         postFormValues,
         getApartments,
+        filterApartments: setFilteredApartments,
     }
 }

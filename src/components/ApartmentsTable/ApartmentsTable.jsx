@@ -2,18 +2,28 @@ import React, { useEffect } from 'react';
 import { useApartments } from '../../hooks/useApartments';
 import { Header } from '../../uiComponents/Header';
 import { Spinner } from '../Spinner/Spinner';
-import { table } from './ApartmentsTable.styles';
+import { apartmentsSwitch, table } from './ApartmentsTable.styles';
 
 export const ApartmentsTable = () => {
-    const {getApartments, apartments, isFetching} = useApartments();
+    const {getApartments, apartments, filterApartments, filteredApartments, isFetching} = useApartments();
 
     useEffect(() => {
         getApartments();
     }, [getApartments])
 
+    const getByStatus = (status) => {
+        const filteredData = apartments.filter(apartment => apartment.status === status);
+        filterApartments(filteredData);
+    }
+    
     return (
         <>
             <Header size={'medium'} margin={'1.5'}>Apartments</Header>
+            <div className={apartmentsSwitch}>
+                <span onClick={() => getByStatus('Available')}>Available</span>
+                <span onClick={() => getByStatus('Unavailable')}>Unavailable</span>
+                <span onClick={() => getByStatus('Reserved')}>Reserved</span>
+            </div>
             <table className={table}>
                 <thead>
                     <tr>
@@ -25,7 +35,7 @@ export const ApartmentsTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {apartments.map(apartment => {
+                    {filteredApartments.map(apartment => {
                         return (
                             <tr key={apartment.key}>
                                 <td>{apartment.number}</td>
