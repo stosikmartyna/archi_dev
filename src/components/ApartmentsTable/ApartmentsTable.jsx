@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApartments } from '../../hooks/useApartments';
 import { Header } from '../../uiComponents/Header';
 import { Spinner } from '../Spinner/Spinner';
@@ -6,6 +6,7 @@ import { apartmentsSwitch, table } from './ApartmentsTable.styles';
 
 export const ApartmentsTable = () => {
     const {getApartments, apartments, filterApartments, filteredApartments, isFetching} = useApartments();
+    const [activeFilter, setActiveFilter] = useState();
 
     useEffect(() => {
         getApartments();
@@ -14,7 +15,10 @@ export const ApartmentsTable = () => {
     const getByStatus = (status) => {
         const filteredData = apartments.filter(apartment => apartment.status === status);
         filterApartments(filteredData);
+        setActiveFilter(status);
     }
+
+    const isTableExtended = activeFilter !== 'Available';
     
     return (
         <>
@@ -32,6 +36,13 @@ export const ApartmentsTable = () => {
                         <th>Area (m²)</th>
                         <th>Rooms</th>
                         <th>Status</th>
+                        {isTableExtended && (
+                            <>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Contract</th>
+                            </>
+                        )}
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +54,13 @@ export const ApartmentsTable = () => {
                                 <td>{apartment.area}</td>
                                 <td>{apartment.rooms}</td>
                                 <td>{apartment.status}</td>
+                                {isTableExtended && (
+                                    <>
+                                        <td>{apartment.client.name}</td>
+                                        <td>{apartment.client.phone}</td>
+                                        <td>{apartment.contract}</td>
+                                    </>
+                                )}                               
                             </tr>
                         )
                     })}
