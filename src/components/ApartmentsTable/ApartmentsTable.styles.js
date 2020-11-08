@@ -3,25 +3,32 @@ import { colors } from '../../constants/colors';
 
 export const tabs = css({
     display: 'flex',
+    fontFamily: 'Montserrat',
     justifyContent: 'space-evenly',
     margin: '0 auto 1.5rem',
     width: '30%',
 })
 
 export const tab = css({
-    color: colors.nightSky,
+    color: colors.grayishBlueLight,
     cursor: 'pointer',
+    display: 'inline-block',
     fontSize: '1.2rem',
 
     '&:hover': {
-        color: colors.nightSkyDark,
+        color: colors.grayishBlue,
+        boxShadow: `0 1px 2px -2px ${colors.grayishBlue}`,
+        transition: 'box-shadow .4s ease-in-out, color .4s ease-in-out',
     }
 })
 
 export const activeTab = css({
-    color: 'blue',
+    boxShadow: `0 2px 2px -2px ${colors.grayishBlue}`,
+    color: colors.grayishBlue,
     cursor: 'pointer',
     fontSize: '1.2rem',
+    fontWeight: 'bold',
+    paddingBottom: '.5rem',
 })
 
 export const table = css({

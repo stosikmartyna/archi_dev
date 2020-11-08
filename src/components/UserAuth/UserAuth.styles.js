@@ -28,7 +28,7 @@ export const appHeader = css({
     zIndex: 1,      
     
     '& span': {
-        color: '#425472',
+        color: colors.grayishBlue,
     }
 })
 
