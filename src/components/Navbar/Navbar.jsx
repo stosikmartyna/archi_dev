@@ -20,11 +20,11 @@ export const Navbar = () => {
                 <Link to={ROUTES.HOME} className={navbarLink}>
                     Home
                 </Link>
-                <Link to={ROUTES.NEW_APT} className={navbarLink}>
-                    New apt.
+                <Link to={ROUTES.NEW_OFFICE} className={navbarLink}>
+                    New Office
                 </Link>
-                <Link to={ROUTES.APARTMENTS} className={navbarLink}>
-                    Apartments
+                <Link to={ROUTES.OFFICES} className={navbarLink}>
+                    Offices
                 </Link>
             </div>
             <div className={navbarUser}>

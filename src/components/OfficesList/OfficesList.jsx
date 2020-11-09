@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useApartments } from '../../hooks/useApartments';
+import { useOffices } from '../../hooks/useOffices';
 import { Header } from '../../uiComponents/Header';
 import { Spinner } from '../Spinner/Spinner';
-import { tabs, tab, activeTab, table } from './ApartmentsTable.styles';
+import { tabs, tab, activeTab, table } from './OfficesList.styles';
 
-export const ApartmentsTable = () => {
-    const {getApartments, apartments, filterApartments, filteredApartments, isFetching} = useApartments();
+export const OfficesList = () => {
+    const {getOffices, offices, filterOffices, filteredOffices, isFetching} = useOffices();
     const [activeFilter, setActiveFilter] = useState('Available');
 
     useEffect(() => {
-        getApartments(activeFilter); 
-    }, [getApartments])
+        getOffices(activeFilter); 
+    }, [getOffices])
 
     const getByStatus = (status) => {
-        const filteredData = apartments.filter(apartment => apartment.status === status);
-        filterApartments(filteredData);
+        const filteredData = offices.filter(office => office.status === status);
+        filterOffices(filteredData);
         setActiveFilter(status);
     }
 
@@ -26,7 +26,7 @@ export const ApartmentsTable = () => {
 
     return (
         <>
-            <Header size={'medium'} margin={'1.5'}>Apartments</Header>
+            <Header size={'medium'} margin={'1.5'}>Offices</Header>
             <div className={tabs}>
                 <span className={getTabClassName('Available')} onClick={() => getByStatus('Available')}>Available</span>
                 <span className={getTabClassName('Unavailable')} onClick={() => getByStatus('Unavailable')}>Unavailable</span>
@@ -35,10 +35,9 @@ export const ApartmentsTable = () => {
             <table className={table}>
                 <thead>
                     <tr>
-                        <th>Number</th>
+                        <th>Office ID</th>
                         <th>Floor</th>
                         <th>Area (m²)</th>
-                        <th>Rooms</th>
                         <th>Status</th>
                         {isTableExtended && (
                             <>
@@ -50,19 +49,18 @@ export const ApartmentsTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredApartments.map(apartment => {
+                    {filteredOffices.map(office => {
                         return (
-                            <tr key={apartment.key}>
-                                <td>{apartment.number}</td>
-                                <td>{apartment.floor}</td>  
-                                <td>{apartment.area}</td>
-                                <td>{apartment.rooms}</td>
-                                <td>{apartment.status}</td>
+                            <tr key={office.key}>
+                                <td>{office.id}</td>
+                                <td>{office.floor}</td>  
+                                <td>{office.area}</td>
+                                <td>{office.status}</td>
                                 {isTableExtended && (
                                     <>
-                                        <td>{apartment.client.name}</td>
-                                        <td>{apartment.client.phone}</td>
-                                        <td>{apartment.contract}</td>
+                                        <td>{office.client.name}</td>
+                                        <td>{office.client.phone}</td>
+                                        <td>{office.contract}</td>
                                     </>
                                 )}                               
                             </tr>

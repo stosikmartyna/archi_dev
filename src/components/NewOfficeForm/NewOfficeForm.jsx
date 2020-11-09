@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { useApartments } from '../../hooks/useApartments';
+import { useOffices } from '../../hooks/useOffices';
 import { Button } from '../../uiComponents/Button';
+import { InputText } from '../../uiComponents/InputText';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
-import { container, formContainer, apartmentFormInputs, imageContainer } from './NewApartmentForm.styles';
-import { NewApartmentsFormClient } from './NewApartmentFormClient';
+import { container, formContainer, officeFormInputs, imageContainer } from './NewOfficeForm.styles';
+import { NewOfficeFormClient } from './NewOfficeFormClient';
 import { Header } from '../../uiComponents/Header';
 
 const initialState = {
-    number: '',
+    id: '',
     area: '',
     floor: '',
-    rooms: '',
     status: 'Available',
     created: {user: '', date: ''},
     contract: '',
@@ -22,10 +22,10 @@ const initialState = {
     }
 }
 
-export const NewApartmentForm = () => {
+export const NewOfficeForm = () => {
     const [inputsValues, setInputsValues] = useState(initialState);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-    const {postFormValues, isFetching} = useApartments();
+    const {postFormValues, isFetching} = useOffices();
 
     const isFormExtended = inputsValues.status !== 'Available';
 
@@ -45,11 +45,9 @@ export const NewApartmentForm = () => {
 
     const submitForm = (event) => {
         event.preventDefault();
-        
-        const isFormValid = inputsValues.number.trim() !== ''
+        const isFormValid = inputsValues.id.trim() !== ''
             && inputsValues.area.trim() !== ''
             && inputsValues.floor.trim() !== '' 
-            && inputsValues.rooms.trim() !== ''
         
         const isClientFormValid = inputsValues.contract !== ''
             && inputsValues.client.name.trim() !== ''
@@ -87,15 +85,15 @@ export const NewApartmentForm = () => {
     return (
         <div className={container}>
             <form className={formContainer} onSubmit={submitForm}>
-                <Header size={'medium'} margin={'1.5'}>New apartment</Header>
-                <div className={apartmentFormInputs}>
-                    <InputNumber 
-                        label={'Number'}
-                        id={'number'}
-                        value={inputsValues.number}
+                <Header size={'medium'} margin={'1.5'}>New office</Header>
+                <div className={officeFormInputs}>
+                    <InputText 
+                        label={'Office ID'}
+                        id={'id'}
+                        type={'text'}
+                        value={inputsValues.id}
                         onChange={handleInputChange}
-                        decimalScale={0}
-                        error={validateForm(inputsValues.number)}
+                        error={validateForm(inputsValues.id)}
                     />
 
                     <InputNumber 
@@ -116,15 +114,6 @@ export const NewApartmentForm = () => {
                         error={validateForm(inputsValues.area)}
                     />
 
-                    <InputNumber 
-                        label={'Rooms N°'}
-                        id={'rooms'}
-                        value={inputsValues.rooms}
-                        onChange={handleInputChange}
-                        decimalScale={0}
-                        error={validateForm(inputsValues.rooms)}
-                    />
-
                     <InputSelect 
                         label={'Status'}
                         id={'status'}
@@ -134,7 +123,7 @@ export const NewApartmentForm = () => {
                     />
                 </div>
                 {isFormExtended && (
-                    <NewApartmentsFormClient 
+                    <NewOfficeFormClient 
                         inputsValues={inputsValues} 
                         onInputChange={handleInputChange} 
                         onClientInputChange={handleClientInputChange}

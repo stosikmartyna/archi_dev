@@ -1,10 +1,10 @@
 import React from 'react';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { InputText } from '../../uiComponents/InputText';
-import { clientFormInputs } from './NewApartmentForm.styles';
+import { clientFormInputs } from './NewOfficeForm.styles';
 import { Header } from '../../uiComponents/Header';
 
-export const NewApartmentsFormClient = ({ inputsValues, onInputChange, onClientInputChange, validateForm, contractOptions }) => {
+export const NewOfficeFormClient = ({ inputsValues, onInputChange, onClientInputChange, validateForm, contractOptions }) => {
     return (
         <>               
             <Header size={'medium'} margin={'1.5'}>Client</Header>

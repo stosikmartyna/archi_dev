@@ -2,16 +2,16 @@ import { useCallback, useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import firebase from 'firebase';
 
-export const useApartments = () => {
+export const useOffices = () => {
     const [isFetching, setIsFetching] = useState(false);
-    const [apartments, setApartments] = useState([]);
-    const [filteredApartments, setFilteredApartments] = useState([]);
+    const [offices, setOffices] = useState([]);
+    const [filteredOffices, setFilteredOffices] = useState([]);
     const {user} = useContext(AuthContext);
 
     const postFormValues = async (values) => {
         setIsFetching(true);
         try {
-            await firebase.database().ref('apartments').push(
+            await firebase.database().ref('offices').push(
                 {
                     ...values,
                     created: {
@@ -29,10 +29,10 @@ export const useApartments = () => {
         }
     };
 
-    const getApartments = useCallback(async (defaultFilter) => {
+    const getOffices = useCallback(async (defaultFilter) => {
         setIsFetching(true);
         try {
-            const response = await firebase.database().ref('apartments').once('value')
+            const response = await firebase.database().ref('offices').once('value')
             const data = [];
             // map object entries to get array instead of nested objects from firebase
             response.forEach((element => {
@@ -41,10 +41,10 @@ export const useApartments = () => {
                 
                 data.push(item);
             }));
-            setApartments(data);
+            setOffices(data);
 
             const filteredData = data.filter(data => data.status === defaultFilter);
-            setFilteredApartments(filteredData);
+            setFilteredOffices(filteredData);
         } catch (err) {
             console.warn(err.message);
         } finally {
@@ -54,10 +54,10 @@ export const useApartments = () => {
 
     return {
         isFetching,
-        apartments,
-        filteredApartments,
+        offices,
+        filteredOffices,
         postFormValues,
-        getApartments,
-        filterApartments: setFilteredApartments,
+        getOffices,
+        filterOffices: setFilteredOffices,
     }
 }

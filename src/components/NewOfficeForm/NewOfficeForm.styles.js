@@ -11,7 +11,7 @@ export const formContainer = css({
     zIndex: '1',
 })
 
-export const apartmentFormInputs = css({
+export const officeFormInputs = css({
     display: 'flex',
     justifyContent: 'space-between',
     margin: '0 2rem',
@@ -22,7 +22,7 @@ export const clientFormInputs = css({
 })
 
 export const imageContainer = css({
-    background: 'url("img/new_apartment_form.jpg")',
+    background: 'url("img/new_office_form.jpg")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     minHeight: 'calc(100vh - 49px)',
