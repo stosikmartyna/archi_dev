@@ -56,3 +56,9 @@ export const table = css({
         backgroundColor: '#f7f9fc',
     }
 })
+
+export const noDataInfo = css({
+    color: colors.grayishBlue,
+    display: 'block',
+    textAlign: 'center',
+})

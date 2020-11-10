@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useOffices } from '../../hooks/useOffices';
 import { Header } from '../../uiComponents/Header';
 import { Spinner } from '../Spinner/Spinner';
-import { tabs, tab, activeTab, table } from './OfficesList.styles';
+import { tabs, tab, activeTab, table, noDataInfo } from './OfficesList.styles';
 
 export const OfficesList = () => {
     const {getOffices, offices, filterOffices, filteredOffices, isFetching} = useOffices();
@@ -19,6 +19,7 @@ export const OfficesList = () => {
     }
 
     const isTableExtended = activeFilter !== 'Available';
+    const isDataEmpty = filteredOffices.length === 0;
     
     const getTabClassName = (status) => {
         return status === activeFilter ? activeTab : tab
@@ -68,6 +69,11 @@ export const OfficesList = () => {
                 </tbody>            
             </table>
             {isFetching && <Spinner />}
+            {!isFetching && isDataEmpty && (
+                <span className={noDataInfo}>
+                    No data has been found
+                </span>
+            )}
         </>
     )
 }
