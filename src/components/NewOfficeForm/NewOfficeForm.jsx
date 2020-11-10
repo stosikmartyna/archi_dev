@@ -6,6 +6,7 @@ import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { container, formContainer, officeFormInputs, imageContainer } from './NewOfficeForm.styles';
 import { Header } from '../../uiComponents/Header';
+import { locationOptions, statusOptions, typeOptions } from './NewOfficeForm.contants';
 
 const initialState = {
     id: '',
@@ -51,27 +52,6 @@ export const NewOfficeForm = () => {
     const validateForm = (value) => {
         return isFormSubmitted && value.trim() === '';
     }
-
-    const typeOptions = [
-        {value: '', name: ''},
-        {value: 'Open Space', name: 'Open Space'},
-        {value: 'Shared offices', name: 'Shared offices'},
-    ]
-
-    const locationOptions = [
-        {value: '', name: ''},
-        {value: 'North', name: 'North'},
-        {value: 'South', name: 'South'},
-        {value: 'West', name: 'West'},
-        {value: 'East', name: 'East'},
-        {value: 'All', name: 'All'},
-    ]
-
-    const statusOptions = [
-        {value: 'Available', name: 'Available'},
-        {value: 'Reserved', name: 'Reserved'},
-        {value: 'Unavailable', name: 'Unavailable'},
-    ]
 
     return (
         <div className={container}>

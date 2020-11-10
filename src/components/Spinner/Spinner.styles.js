@@ -15,9 +15,9 @@ const spin = keyframes`
 
 export const spinner = css({
     animation: `${spin} 1s linear infinite`,
-    border: `4px solid ${colors.foggySkyLight}`,
-    borderTopColor: colors.nightSky,
-    borderBottomColor: colors.nightSky,
+    border: `2px solid ${colors.foggySkyLight}`,
+    borderTopColor: colors.grayishBlue,
+    borderBottomColor: colors.grayishBlue,
     borderRadius: '50%',
     height: '70px',
     margin: '1.5rem auto 0',

@@ -12,7 +12,7 @@ export const OfficesList = () => {
         getOffices(activeFilter); 
     }, [getOffices, activeFilter])
 
-    const getByStatus = (status) => {
+    const handleFilterChange = (status) => {
         const filteredData = offices.filter(office => office.status === status);
         filterOffices(filteredData);
         setActiveFilter(status);
@@ -29,9 +29,9 @@ export const OfficesList = () => {
         <>
             <Header size={'medium'} margin={'1.5'}>Offices</Header>
             <div className={tabs}>
-                <span className={getTabClassName('Available')} onClick={() => getByStatus('Available')}>Available</span>
-                <span className={getTabClassName('Unavailable')} onClick={() => getByStatus('Unavailable')}>Unavailable</span>
-                <span className={getTabClassName('Reserved')} onClick={() => getByStatus('Reserved')}>Reserved</span>
+                <span className={getTabClassName('Available')} onClick={() => handleFilterChange('Available')}>Available</span>
+                <span className={getTabClassName('Unavailable')} onClick={() => handleFilterChange('Unavailable')}>Unavailable</span>
+                <span className={getTabClassName('Reserved')} onClick={() => handleFilterChange('Reserved')}>Reserved</span>
             </div>
             <table className={table}>
                 <thead>
