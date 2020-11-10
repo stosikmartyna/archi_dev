@@ -5,7 +5,7 @@ import { colors } from '../constants/colors';
 
 export const InputNumber = (props) => {
     const styles = css({
-        minWidth: '105px',
+        margin: '0 1rem 1rem 1rem',
     
         '& label': {
             color: colors.foggySky,
@@ -23,7 +23,7 @@ export const InputNumber = (props) => {
             outline: 'none',
             padding: '.5rem 0',
             textAlign: 'center',
-            width: '80px',
+            width: props.width ? `${props.width}px` : '180px',
         },
     
         '& span': {

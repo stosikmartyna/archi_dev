@@ -5,21 +5,19 @@ import { InputText } from '../../uiComponents/InputText';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { container, formContainer, officeFormInputs, imageContainer } from './NewOfficeForm.styles';
-import { NewOfficeFormClient } from './NewOfficeFormClient';
 import { Header } from '../../uiComponents/Header';
 
 const initialState = {
     id: '',
-    area: '',
     floor: '',
+    area: '',
+    location: '',
+    price: '',
+    type: '',
+    officesNo: '',
     status: 'Available',
     created: {user: '', date: ''},
     contract: '',
-    client: {
-        name: '',
-        email: '',
-        phone: '',
-    }
 }
 
 export const NewOfficeForm = () => {
@@ -27,59 +25,52 @@ export const NewOfficeForm = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const {postFormValues, isFetching} = useOffices();
 
-    const isFormExtended = inputsValues.status !== 'Available';
+    const isTypeSharedOffices = inputsValues.type === 'Shared offices';
 
     const handleInputChange = (event) => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
-    }
-
-    const handleClientInputChange = (event) => {
-        setInputsValues({
-            ...inputsValues, 
-            client: {
-                ...inputsValues.client,
-                [event.target.id]: event.target.value
-            }
-        })
     }
 
     const submitForm = (event) => {
         event.preventDefault();
         const isFormValid = inputsValues.id.trim() !== ''
             && inputsValues.area.trim() !== ''
-            && inputsValues.floor.trim() !== '' 
-        
-        const isClientFormValid = inputsValues.contract !== ''
-            && inputsValues.client.name.trim() !== ''
-            && inputsValues.client.email.trim() !== ''
-            && inputsValues.client.phone.trim() !== ''
+            && inputsValues.type !== ''
+            && inputsValues.location !== ''
+            && inputsValues.price.trim() !== ''
 
         const clearForm = () => {
-            setInputsValues(initialState) 
-            setIsFormSubmitted(false)
+            setInputsValues(initialState);
+            setIsFormSubmitted(false);
         }
 
         setIsFormSubmitted(true);
-        isFormExtended
-            ? isFormValid && isClientFormValid && postFormValues(inputsValues) && clearForm()
-            : isFormValid && postFormValues(inputsValues) && clearForm()
+        isFormValid && postFormValues(inputsValues) && clearForm();
     }
 
     const validateForm = (value) => {
         return isFormSubmitted && value.trim() === '';
     }
 
+    const typeOptions = [
+        {value: '', name: ''},
+        {value: 'Open Space', name: 'Open Space'},
+        {value: 'Shared offices', name: 'Shared offices'},
+    ]
+
+    const locationOptions = [
+        {value: '', name: ''},
+        {value: 'North', name: 'North'},
+        {value: 'South', name: 'South'},
+        {value: 'West', name: 'West'},
+        {value: 'East', name: 'East'},
+        {value: 'All', name: 'All'},
+    ]
+
     const statusOptions = [
         {value: 'Available', name: 'Available'},
         {value: 'Reserved', name: 'Reserved'},
         {value: 'Unavailable', name: 'Unavailable'},
-    ]
-
-    const contractOptions = [
-        {value: '', name: ''},
-        {value: 'Renting', name: 'Renting'},
-        {value: 'Buying', name: 'Buying'},
-        {value: 'Long lease', name: 'Long lease'},
     ]
 
     return (
@@ -113,6 +104,24 @@ export const NewOfficeForm = () => {
                         decimalScale={2}
                         error={validateForm(inputsValues.area)}
                     />
+                
+                    <InputSelect 
+                        label={'Location'}
+                        id={'location'}
+                        value={inputsValues.location}
+                        onChange={handleInputChange}
+                        options={locationOptions}
+                        error={validateForm(inputsValues.location)}
+                    /> 
+
+                    <InputNumber 
+                        label={'Price (p/m)'}
+                        id={'price'}
+                        value={inputsValues.price}
+                        onChange={handleInputChange}
+                        decimalScale={3}
+                        error={validateForm(inputsValues.price)}
+                    />
 
                     <InputSelect 
                         label={'Status'}
@@ -121,16 +130,29 @@ export const NewOfficeForm = () => {
                         onChange={handleInputChange}
                         options={statusOptions}
                     />
+
+                    <InputSelect 
+                        label={'Type'}
+                        id={'type'}
+                        value={inputsValues.type}
+                        onChange={handleInputChange}
+                        options={typeOptions}
+                        error={validateForm(inputsValues.type)}
+                    /> 
+
+                    {isTypeSharedOffices && 
+                        (
+                            <InputNumber 
+                                label={'Offices N°'}
+                                id={'officesNo'}
+                                value={inputsValues.officesNo}
+                                onChange={handleInputChange}
+                                decimalScale={0}
+                                error={validateForm(inputsValues.officesNo)}
+                            />
+                        )
+                    }
                 </div>
-                {isFormExtended && (
-                    <NewOfficeFormClient 
-                        inputsValues={inputsValues} 
-                        onInputChange={handleInputChange} 
-                        onClientInputChange={handleClientInputChange}
-                        validateForm={validateForm}
-                        contractOptions={contractOptions}
-                    />
-                )}
                 <Button disabled={isFetching}>
                     {isFetching ? 'Loading...' : 'Submit'}
                 </Button>

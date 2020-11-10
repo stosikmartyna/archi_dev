@@ -10,7 +10,7 @@ export const OfficesList = () => {
 
     useEffect(() => {
         getOffices(activeFilter); 
-    }, [getOffices])
+    }, [getOffices, activeFilter])
 
     const getByStatus = (status) => {
         const filteredData = offices.filter(office => office.status === status);
@@ -38,7 +38,10 @@ export const OfficesList = () => {
                         <th>Office ID</th>
                         <th>Floor</th>
                         <th>Area (m²)</th>
+                        <th>Location</th>
+                        <th>Price</th>
                         <th>Status</th>
+                        <th>Type</th>
                         {isTableExtended && (
                             <>
                                 <th>Name</th>
@@ -53,16 +56,12 @@ export const OfficesList = () => {
                         return (
                             <tr key={office.key}>
                                 <td>{office.id}</td>
-                                <td>{office.floor}</td>  
+                                <td>{office.floor}</td>
                                 <td>{office.area}</td>
+                                <td>{office.location}</td>
+                                <td>{office.price}</td>
                                 <td>{office.status}</td>
-                                {isTableExtended && (
-                                    <>
-                                        <td>{office.client.name}</td>
-                                        <td>{office.client.phone}</td>
-                                        <td>{office.contract}</td>
-                                    </>
-                                )}                               
+                                <td>{office.type}</td>           
                             </tr>
                         )
                     })}

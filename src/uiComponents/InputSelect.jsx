@@ -4,7 +4,7 @@ import { colors } from '../constants/colors';
 
 export const InputSelect = (props) => {
     const styles = css({
-        width: '105px',
+        margin: '0 1rem 1rem 1rem',
     
         '& label': {
             color: colors.foggySky,
@@ -20,8 +20,8 @@ export const InputSelect = (props) => {
             fontSize: '1rem',
             display: 'block',
             outline: 'none',
-            padding: '.5rem 0',
-            width: `${props.width}px`,
+            padding: '.53rem 0',
+            width: props.width ? `${props.width}px` : '180px',
         },
     
         '& span': {

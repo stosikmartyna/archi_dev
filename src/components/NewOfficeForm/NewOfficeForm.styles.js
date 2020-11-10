@@ -13,12 +13,9 @@ export const formContainer = css({
 
 export const officeFormInputs = css({
     display: 'flex',
-    justifyContent: 'space-between',
-    margin: '0 2rem',
-})
-
-export const clientFormInputs = css({
-    margin: '0 2rem',
+    flexWrap: 'wrap',
+    margin: '0 auto',
+    width: '640px',
 })
 
 export const imageContainer = css({
