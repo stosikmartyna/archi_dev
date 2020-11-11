@@ -6,7 +6,7 @@ import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { container, formContainer, officeFormInputs, imageContainer } from './NewOfficeForm.styles';
 import { Header } from '../../uiComponents/Header';
-import { locationOptions, statusOptions, typeOptions } from './NewOfficeForm.contants';
+import { locationOptions, statusOptions, typeOptions } from './NewOfficeForm.constants';
 
 const initialState = {
     id: '',

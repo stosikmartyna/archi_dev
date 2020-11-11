@@ -3,4 +3,5 @@ export const ROUTES = {
     SIGN_IN: '/sign-in',
     NEW_OFFICE: '/new-office',
     OFFICES: '/offices',
+    EDIT_OFFICE: '/edit-office',
 }

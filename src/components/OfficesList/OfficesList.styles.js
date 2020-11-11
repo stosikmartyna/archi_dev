@@ -57,6 +57,20 @@ export const table = css({
     }
 })
 
+export const tableButton = css({
+    backgroundColor: '#d5e6f2',
+    border: 'none',
+    borderRadius: '3px',
+    color: colors.grayishBlueLight,
+    cursor: 'pointer',
+    outline: 'none',
+    padding: '.2rem .4rem',
+    textTransform: 'uppercase',
+        '&:hover': {
+            backgroundColor: '#ccdce8',
+        },
+})
+
 export const noDataInfo = css({
     color: colors.grayishBlue,
     display: 'block',

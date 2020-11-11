@@ -7,6 +7,7 @@ import { NewOfficeForm } from './components/NewOfficeForm/NewOfficeForm';
 import { OfficesList } from './components/OfficesList/OfficesList';
 import { UserAuth } from './components/UserAuth/UserAuth';
 import { Header } from './uiComponents/Header';
+import { EditOffice } from './components/EditOffice/EditOffice';
 import './App.css';
 
 export const App = () => {
@@ -24,6 +25,9 @@ export const App = () => {
         </Route>
         <Route path={ROUTES.OFFICES}>
           {user ? <OfficesList /> : <Redirect to={ROUTES.SIGN_IN} />}
+        </Route>
+        <Route path={ROUTES.EDIT_OFFICE}>
+          {user ? <EditOffice /> : <Redirect to={ROUTES.SIGN_IN} />}
         </Route>
         <Route path={ROUTES.SIGN_IN}>
           {!user ? <UserAuth /> : <Redirect to={ROUTES.HOME} />}
