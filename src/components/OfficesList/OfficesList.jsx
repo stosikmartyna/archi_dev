@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { generatePath, useHistory } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import { useOffices } from '../../hooks/useOffices';
 import { Header } from '../../uiComponents/Header';
@@ -28,8 +28,9 @@ export const OfficesList = () => {
         return status === activeFilter ? activeTab : tab
     }
 
-    const handleButtonClick = (id) => {
-        history.push(`${ROUTES.EDIT_OFFICE}/${id}`);
+    const handleEditButtonClick = (key) => {
+        const path = generatePath(`${ROUTES.EDIT_OFFICE}/:key`, {key})
+        history.push(path);
     }
 
     return (
@@ -73,7 +74,7 @@ export const OfficesList = () => {
                                 <td>{office.type}</td>   
                                 <td>
                                     <button 
-                                        onClick={() => handleButtonClick(office.id)} 
+                                        onClick={() => handleEditButtonClick(office.key)} 
                                         className={tableButton}
                                     >
                                         Edit

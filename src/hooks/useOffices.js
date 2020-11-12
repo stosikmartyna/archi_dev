@@ -5,6 +5,7 @@ import firebase from 'firebase';
 export const useOffices = () => {
     const [isFetching, setIsFetching] = useState(false);
     const [offices, setOffices] = useState([]);
+    const [editingOffice, setEditingOffice] = useState();
     const [filteredOffices, setFilteredOffices] = useState([]);
     const {user} = useContext(AuthContext);
 
@@ -52,12 +53,26 @@ export const useOffices = () => {
         }
     }, []);
 
+    const getSingleOffice = useCallback(async (key) => {
+        setIsFetching(true);
+        try {
+            const response = await firebase.database().ref(`offices/${key}`).once('value');
+            setEditingOffice(response.val())
+        } catch (err) {
+            console.warn(err.message);
+        } finally {
+            setIsFetching(false);
+        }
+    }, []);
+
     return {
         isFetching,
         offices,
         filteredOffices,
+        editingOffice,
         postFormValues,
         getOffices,
+        getSingleOffice,
         filterOffices: setFilteredOffices,
     }
 }
