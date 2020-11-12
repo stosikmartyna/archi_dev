@@ -65,6 +65,22 @@ export const useOffices = () => {
         }
     }, []);
 
+    const updateSingleOffice = async (key, officeData) => {
+        setIsFetching(true);
+        try {
+            await firebase.database().ref(`offices/${key}`).update(officeData);
+            alert('Edited correctly');
+        } catch (err) {
+            alert(err);
+        } finally {
+            setIsFetching(false);
+        }
+    };
+
+    const handleEditOfficeChange = (event) => {
+        setEditingOffice({...editingOffice, [event.target.id]: event.target.value})
+    }
+
     return {
         isFetching,
         offices,
@@ -73,6 +89,8 @@ export const useOffices = () => {
         postFormValues,
         getOffices,
         getSingleOffice,
+        updateSingleOffice,
+        handleEditOfficeChange,
         filterOffices: setFilteredOffices,
     }
 }

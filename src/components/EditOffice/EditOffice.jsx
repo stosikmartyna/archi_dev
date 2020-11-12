@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Header } from '../../uiComponents/Header';
 import { InputText } from '../../uiComponents/InputText';
 import { InputNumber } from '../../uiComponents/InputNumber';
@@ -9,48 +9,36 @@ import { officeFormInputs} from './EditOffice.styles';
 import { useOffices } from '../../hooks/useOffices';
 import { useLocation } from 'react-router-dom';
 import { Spinner } from '../Spinner/Spinner';
-
-const initialState = {
-    id: '',
-    floor: '',
-    area: '',
-    location: '',
-    price: '',
-    type: '',
-    officesNo: '',
-    status: '',
-    created: {user: '', date: ''},
-    contract: '',
-}
+import { ROUTES } from '../../constants/routes';
 
 export const EditOffice = () => {
-    const [inputsValues, setInputsValues] = useState(initialState);
-
-    const {isFetching, getSingleOffice, editingOffice} = useOffices();
+    const {isFetching, getSingleOffice, updateSingleOffice, handleEditOfficeChange, editingOffice} = useOffices();
     const pathname = useLocation().pathname;
-    const officeKey = pathname.replace('/edit-office/', '')
+    const officeKey = pathname.replace(`${ROUTES.EDIT_OFFICE}/`, '')
     // temporary solution - TODO: get officeID as url param 
 
-    const handleInputChange = (event) => {
-        setInputsValues({...inputsValues, [event.target.id]: event.target.value})
-    }
     useEffect(() => {
         getSingleOffice(officeKey);
     }, [getSingleOffice, officeKey]);
+
+    const submitForm = (event) => {
+        event.preventDefault();
+        updateSingleOffice(officeKey, editingOffice);
+    }
 
     return (
         <>
             <Header size={'medium'} margin={'1.5'}>Edit office</Header>
             {isFetching && <Spinner />}
             {editingOffice && (
-                <form>
+                <form onSubmit={submitForm}>
                     <div className={officeFormInputs}>
                         <InputText 
                             label={'Office ID'}
                             id={'id'}
                             type={'text'}
                             value={editingOffice.id}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         />
 
                         <InputNumber 
@@ -58,7 +46,7 @@ export const EditOffice = () => {
                             id={'floor'}
                             value={editingOffice.floor}
                             decimalScale={0}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         />
 
                         <InputNumber 
@@ -66,7 +54,7 @@ export const EditOffice = () => {
                             id={'area'}
                             value={editingOffice.area}
                             decimalScale={2}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         />
 
                         <InputSelect 
@@ -74,7 +62,7 @@ export const EditOffice = () => {
                             id={'location'}
                             value={editingOffice.location}
                             options={locationOptions}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         /> 
 
                         <InputNumber 
@@ -82,7 +70,7 @@ export const EditOffice = () => {
                             id={'price'}
                             value={editingOffice.price}
                             decimalScale={3}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         />
 
                         <InputSelect 
@@ -90,7 +78,7 @@ export const EditOffice = () => {
                             id={'status'}
                             value={editingOffice.status}
                             options={statusOptions}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         />
 
                         <InputSelect 
@@ -98,7 +86,7 @@ export const EditOffice = () => {
                             id={'type'}
                             value={editingOffice.type}
                             options={typeOptions}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         /> 
 
                         <InputNumber 
@@ -106,7 +94,7 @@ export const EditOffice = () => {
                             id={'officesNo'}
                             value={editingOffice.officesNo}
                             decimalScale={0}
-                            onChange={handleInputChange}
+                            onChange={handleEditOfficeChange}
                         />
                     </div>
                     <Button>
