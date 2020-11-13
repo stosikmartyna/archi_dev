@@ -4,9 +4,10 @@ import { Button } from '../../uiComponents/Button';
 import { InputText } from '../../uiComponents/InputText';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
-import { container, formContainer, inputsContainer, imageContainer, buttonsContainer } from './NewOfficeForm.styles';
 import { Header } from '../../uiComponents/Header';
+import { SlantedDiv } from '../../uiComponents/SlantedDiv';
 import { locationOptions, statusOptions, typeOptions } from './NewOfficeForm.constants';
+import { container, formContainer, inputsContainer, buttonsContainer } from './NewOfficeForm.styles';
 
 const initialState = {
     id: '',
@@ -143,7 +144,7 @@ export const NewOfficeForm = () => {
                     </Button>
                 </div>
             </form>
-            <div className={imageContainer} />
+            <SlantedDiv imagePath={"/img/new_office_form.jpg"} />
         </div>
     )
 }

@@ -9,7 +9,8 @@ import { InputSelect } from '../../uiComponents/InputSelect';
 import { Button } from '../../uiComponents/Button';
 import { Spinner } from '../Spinner/Spinner';
 import { locationOptions, statusOptions, typeOptions } from './EditOffice.constants';
-import { officeFormInputs} from './EditOffice.styles';
+import { container, formContainer, officeFormInputs} from './EditOffice.styles';
+import { SlantedDiv } from '../../uiComponents/SlantedDiv';
 
 export const EditOffice = () => {
     const {isFetching, editingOffice, getSingleOffice, updateSingleOffice, handleEditOfficeChange} = useSingleOffice();
@@ -27,11 +28,11 @@ export const EditOffice = () => {
     }
 
     return (
-        <>
-            <Header size={'medium'} margin={'1.5'}>Edit office</Header>
+        <div className={container}>
             {isFetching && <Spinner />}
             {editingOffice && (
-                <form onSubmit={submitForm}>
+                <form className={formContainer} onSubmit={submitForm}>
+                <Header size={'medium'} margin={'1.5'}>Edit office</Header>
                     <div className={officeFormInputs}>
                         <InputText 
                             label={'Office ID'}
@@ -40,7 +41,6 @@ export const EditOffice = () => {
                             value={editingOffice.id}
                             onChange={handleEditOfficeChange}
                         />
-
                         <InputNumber 
                             label={'Floor'}
                             id={'floor'}
@@ -48,7 +48,6 @@ export const EditOffice = () => {
                             decimalScale={0}
                             onChange={handleEditOfficeChange}
                         />
-
                         <InputNumber 
                             label={'Area (m²)'}
                             id={'area'}
@@ -56,7 +55,6 @@ export const EditOffice = () => {
                             decimalScale={2}
                             onChange={handleEditOfficeChange}
                         />
-
                         <InputSelect 
                             label={'Location'}
                             id={'location'}
@@ -64,7 +62,6 @@ export const EditOffice = () => {
                             options={locationOptions}
                             onChange={handleEditOfficeChange}
                         /> 
-
                         <InputNumber 
                             label={'Price (p/m)'}
                             id={'price'}
@@ -72,7 +69,6 @@ export const EditOffice = () => {
                             decimalScale={3}
                             onChange={handleEditOfficeChange}
                         />
-
                         <InputSelect 
                             label={'Status'}
                             id={'status'}
@@ -80,7 +76,6 @@ export const EditOffice = () => {
                             options={statusOptions}
                             onChange={handleEditOfficeChange}
                         />
-
                         <InputSelect 
                             label={'Type'}
                             id={'type'}
@@ -88,7 +83,6 @@ export const EditOffice = () => {
                             options={typeOptions}
                             onChange={handleEditOfficeChange}
                         /> 
-
                         <InputNumber 
                             label={'Offices N°'}
                             id={'officesNo'}
@@ -102,6 +96,7 @@ export const EditOffice = () => {
                     </Button>
                 </form>
             )}
-        </>
+            <SlantedDiv imagePath={"/img/edit_office_form.jpg"} />
+        </div>
     )
 }
