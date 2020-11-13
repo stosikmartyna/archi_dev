@@ -4,7 +4,7 @@ import { Button } from '../../uiComponents/Button';
 import { InputText } from '../../uiComponents/InputText';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
-import { container, formContainer, officeFormInputs, imageContainer } from './NewOfficeForm.styles';
+import { container, formContainer, inputsContainer, imageContainer, buttonsContainer } from './NewOfficeForm.styles';
 import { Header } from '../../uiComponents/Header';
 import { locationOptions, statusOptions, typeOptions } from './NewOfficeForm.constants';
 
@@ -32,6 +32,12 @@ export const NewOfficeForm = () => {
         setInputsValues({...inputsValues, [event.target.id]: event.target.value})
     }
 
+    const clearForm = () => {
+        console.log('reset')
+        setInputsValues(initialState);
+        setIsFormSubmitted(false);
+    }
+
     const submitForm = (event) => {
         event.preventDefault();
         const isFormValid = inputsValues.id.trim() !== ''
@@ -39,11 +45,6 @@ export const NewOfficeForm = () => {
             && inputsValues.type !== ''
             && inputsValues.location !== ''
             && inputsValues.price.trim() !== ''
-
-        const clearForm = () => {
-            setInputsValues(initialState);
-            setIsFormSubmitted(false);
-        }
 
         setIsFormSubmitted(true);
         isFormValid && postFormValues(inputsValues) && clearForm();
@@ -57,7 +58,7 @@ export const NewOfficeForm = () => {
         <div className={container}>
             <form className={formContainer} onSubmit={submitForm}>
                 <Header size={'medium'} margin={'1.5'}>New office</Header>
-                <div className={officeFormInputs}>
+                <div className={inputsContainer}>
                     <InputText 
                         label={'Office ID'}
                         id={'id'}
@@ -99,7 +100,7 @@ export const NewOfficeForm = () => {
                         id={'price'}
                         value={inputsValues.price}
                         onChange={handleInputChange}
-                        decimalScale={3}
+                        decimalScale={2}
                         error={validateForm(inputsValues.price)}
                     />
 
@@ -133,9 +134,14 @@ export const NewOfficeForm = () => {
                         )
                     }
                 </div>
-                <Button disabled={isFetching}>
-                    {isFetching ? 'Loading...' : 'Submit'}
-                </Button>
+                <div className={buttonsContainer}>
+                    <Button onClick={clearForm} type={'reset'}>
+                        Clear
+                    </Button>
+                    <Button disabled={isFetching} type={'submit'}>
+                        {isFetching ? 'Loading...' : 'Submit'}
+                    </Button>
+                </div>
             </form>
             <div className={imageContainer} />
         </div>

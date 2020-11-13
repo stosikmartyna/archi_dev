@@ -11,11 +11,17 @@ export const formContainer = css({
     zIndex: '1',
 })
 
-export const officeFormInputs = css({
+export const inputsContainer = css({
     display: 'flex',
     flexWrap: 'wrap',
     margin: '0 auto',
     width: '640px',
+})
+
+export const buttonsContainer = css({
+    display: 'flex',
+    margin: '0 auto',
+    width: '25%',
 })
 
 export const imageContainer = css({
