@@ -22,7 +22,6 @@ export const InputNumber = (props) => {
             letterSpacing: '.1rem',
             outline: 'none',
             padding: '.5rem 0',
-            textAlign: 'center',
             width: props.width ? `${props.width}px` : '180px',
         },
     

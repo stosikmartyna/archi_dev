@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSingleOffice } from '../../hooks/useSingleOffice';
+import { ROUTES } from '../../constants/routes';
 import { Header } from '../../uiComponents/Header';
 import { InputText } from '../../uiComponents/InputText';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputSelect } from '../../uiComponents/InputSelect';
 import { Button } from '../../uiComponents/Button';
+import { Spinner } from '../Spinner/Spinner';
 import { locationOptions, statusOptions, typeOptions } from './EditOffice.constants';
 import { officeFormInputs} from './EditOffice.styles';
-import { useOffices } from '../../hooks/useOffices';
-import { useLocation } from 'react-router-dom';
-import { Spinner } from '../Spinner/Spinner';
-import { ROUTES } from '../../constants/routes';
 
 export const EditOffice = () => {
-    const {isFetching, getSingleOffice, updateSingleOffice, handleEditOfficeChange, editingOffice} = useOffices();
+    const {isFetching, editingOffice, getSingleOffice, updateSingleOffice, handleEditOfficeChange} = useSingleOffice();
     const pathname = useLocation().pathname;
     const officeKey = pathname.replace(`${ROUTES.EDIT_OFFICE}/`, '')
     // temporary solution - TODO: get officeID as url param 
