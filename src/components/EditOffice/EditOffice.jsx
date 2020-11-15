@@ -9,7 +9,7 @@ import { InputSelect } from '../../uiComponents/InputSelect';
 import { Button } from '../../uiComponents/Button';
 import { Spinner } from '../Spinner/Spinner';
 import { locationOptions, statusOptions, typeOptions } from './EditOffice.constants';
-import { container, formContainer, officeFormInputs} from './EditOffice.styles';
+import { container, formContainer, inputsContainer, statusContainer, clientContainer} from './EditOffice.styles';
 import { SlantedDiv } from '../../uiComponents/SlantedDiv';
 
 export const EditOffice = () => {
@@ -47,8 +47,17 @@ export const EditOffice = () => {
             {editingOffice && (
                 <form className={formContainer} onSubmit={submitForm}>
                 <Header size={'medium'} margin={'1.5'}>Edit office</Header>
-                {console.log(editingOffice)}
-                    <div className={officeFormInputs}>
+                    <div className={inputsContainer}>
+                        <div className={statusContainer}>
+                            <Header size={'small'} margin={'1.5'}>Change status to provide client data:</Header>
+                            <InputSelect 
+                                label={'Status'}
+                                id={'status'}
+                                value={editingOffice.status}
+                                options={statusOptions}
+                                onChange={handleEditOfficeChange}
+                            />
+                        </div>
                         <InputText 
                             label={'Office ID'}
                             id={'id'}
@@ -90,13 +99,6 @@ export const EditOffice = () => {
                             error={validateForm(editingOffice.price)}
                         />
                         <InputSelect 
-                            label={'Status'}
-                            id={'status'}
-                            value={editingOffice.status}
-                            options={statusOptions}
-                            onChange={handleEditOfficeChange}
-                        />
-                        <InputSelect 
                             label={'Type'}
                             id={'type'}
                             value={editingOffice.type}
@@ -114,6 +116,62 @@ export const EditOffice = () => {
                                     onChange={handleEditOfficeChange}
                                     error={validateForm(editingOffice.officesNo)}
                                 />
+                            )
+                        }
+                        
+                        {editingOffice.status !== 'Available' &&
+                            (
+                                <div className={clientContainer}>
+                                    <Header size={'small'} margin={'1.5'}>Client data</Header>
+                                    <InputText
+                                        type={'text'}
+                                        label={'Company name'}
+                                        id={'companyName'}
+                                    />
+                                    <InputText
+                                        type={'phone'}
+                                        label={'Telephone number'}
+                                        id={'telephoneNumber'}
+                                    />
+                                    <InputText
+                                        type={'mail'}
+                                        label={'Email address'}
+                                        id={'emailAddress'}
+                                    />
+                                    <InputNumber
+                                        label={'Company number'}
+                                        id={'companyNumber'}
+                                        decimalScale={0}
+                                    />
+                                    <InputText
+                                        type={'text'}
+                                        label={'Company type'}
+                                        id={'companyType'}
+                                    />    
+                                    <div>
+                                        <Header size={'small'} margin={'1.5'}>Register address</Header>
+                                        <InputText
+                                            type={'text'}
+                                            label={'Street'}
+                                            id={'street'}
+                                        />
+                                        <InputText
+                                            type={'text'}
+                                            label={'City'}
+                                            id={'city'}
+                                        />
+                                        <InputText
+                                            type={'text'}
+                                            label={'Post code'}
+                                            id={'postCode'}
+                                        />
+                                        <InputText
+                                            type={'text'}
+                                            label={'Country'}
+                                            id={'country'}
+                                        />
+                                    </div>
+                                </div>
                             )
                         }
                     </div>
