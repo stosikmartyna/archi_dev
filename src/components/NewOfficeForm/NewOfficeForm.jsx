@@ -19,7 +19,19 @@ const initialState = {
     officesNo: '',
     status: 'Available',
     created: {user: '', date: ''},
-    contract: '',
+    client: {
+        companyName: '',
+        companyPhone: '',
+        companyEmail: '',
+        companyNumber: '',
+        companyType: '',
+        companyAddress: '',
+        contractDataFrom: '',
+        contractDataTo: '',
+        representativeName: '',
+        representativePhone: '',
+        representativeEmail: '',
+    }    
 }
 
 export const NewOfficeForm = () => {
@@ -34,7 +46,6 @@ export const NewOfficeForm = () => {
     }
 
     const clearForm = () => {
-        console.log('reset')
         setInputsValues(initialState);
         setIsFormSubmitted(false);
     }

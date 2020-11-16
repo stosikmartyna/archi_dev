@@ -33,11 +33,21 @@ export const useSingleOffice = () => {
         setEditingOffice({...editingOffice, [event.target.id]: event.target.value})
     }
 
+    const handleClientDataChange = (event) => {
+        setEditingOffice({
+            ...editingOffice, 
+            client: {
+                ...editingOffice.client, [event.target.id]: event.target.value
+            }
+        })
+    }
+
     return {
         isFetching,
         editingOffice,
         getSingleOffice,
         updateSingleOffice,
         handleEditOfficeChange,
+        handleClientDataChange,
     }
 }

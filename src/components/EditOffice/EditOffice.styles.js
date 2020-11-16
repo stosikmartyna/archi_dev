@@ -27,12 +27,12 @@ export const clientContainer = css({
     width: '640px',
 })
 
-export const clientDataContainer = css({
+export const companyDataContainer = css({
     display: 'flex',
     flexWrap: 'wrap',
 })
 
-export const clientAddressContainer = css({
+export const representativeDataContainer = css({
     display: 'flex',
     flexWrap: 'wrap',
 })

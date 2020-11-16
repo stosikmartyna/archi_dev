@@ -14,7 +14,7 @@ import { EditOfficeClientData } from './EditOfficeClientData';
 import { container, formContainer, inputsContainer, statusContainer } from './EditOffice.styles';
 
 export const EditOffice = () => {
-    const {isFetching, editingOffice, getSingleOffice, updateSingleOffice, handleEditOfficeChange} = useSingleOffice();
+    const {isFetching, editingOffice, getSingleOffice, updateSingleOffice, handleEditOfficeChange, handleClientDataChange} = useSingleOffice();
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const pathname = useLocation().pathname;
     const officeKey = pathname.replace(`${ROUTES.EDIT_OFFICE}/`, '')
@@ -127,7 +127,7 @@ export const EditOffice = () => {
             )}
             {editingOffice && (editingOffice.status === 'Available' 
                 ? <SlantedDiv imagePath={"/img/edit_office_form.jpg"} />
-                : <EditOfficeClientData />
+                : <EditOfficeClientData editingOffice={editingOffice} onClientDataChange={handleClientDataChange} />
             )}
         </div>
     )

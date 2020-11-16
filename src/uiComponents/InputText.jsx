@@ -33,7 +33,7 @@ export const InputText = (props) => {
     return (
         <div className={styles}>
             <label htmlFor={props.id}>{props.label}</label>
-            <input id={props.id} type={props.type} value={props.value} onChange={props.onChange} autoComplete={'off'} />
+            <input id={props.id} type={props.type} value={props.value} onChange={props.onChange} autoComplete={'off'} placeholder={props.placeholder} />
             {props.error && <span>This field is required</span>}
         </div>
     )
