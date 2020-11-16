@@ -23,6 +23,20 @@ export const statusContainer = css({
 })
 
 export const clientContainer = css({
-    border: '1px solid red',
+    marginTop: '1.5rem',
     width: '640px',
+})
+
+export const clientDataContainer = css({
+    display: 'flex',
+    flexWrap: 'wrap',
+})
+
+export const clientAddressContainer = css({
+    display: 'flex',
+    flexWrap: 'wrap',
+})
+
+export const clientContractContainer = css({
+    display: 'flex',
 })
