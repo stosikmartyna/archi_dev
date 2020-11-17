@@ -22,6 +22,12 @@ export const InputText = (props) => {
             outline: 'none',
             padding: '.5rem 0',
             width: props.width ? `${props.width}px` : '180px',
+
+            '&::placeholder': {
+                color: colors.foggySky,
+                fontFamily: 'Ubuntu',
+                fontSize: '.8rem'
+            }
         },
 
         '& span': {

@@ -1,14 +1,15 @@
 import React from 'react';
+import { Button } from '../../uiComponents/Button';
 import { Header } from '../../uiComponents/Header';
 import { InputDate } from '../../uiComponents/InputDate';
 import { InputNumber } from '../../uiComponents/InputNumber';
 import { InputText } from '../../uiComponents/InputText';
 import { clientContainer, companyDataContainer, clientContractContainer, representativeDataContainer } from './EditOffice.styles';
 
-export const EditOfficeClientData = ({editingOffice, onClientDataChange}) => {
+export const EditOfficeClientData = ({editingOffice, onClientDataChange, submitForm}) => {
     return (
         <div className={clientContainer}>
-            <Header size={'small'} margin={'1.5'}>Company data</Header>
+            <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Company data</Header>
             <div className={companyDataContainer}>
                 <InputText
                     type={'text'}
@@ -16,20 +17,7 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange}) => {
                     id={'companyName'}
                     value={editingOffice.client.companyName}
                     onChange={onClientDataChange}
-                />
-                <InputText
-                    type={'phone'}
-                    label={'Phone'}
-                    id={'companyPhone'}
-                    value={editingOffice.client.phoneNumber}
-                    onChange={onClientDataChange}
-                />
-                <InputText
-                    type={'mail'}
-                    label={'Email'}
-                    id={'companyEmail'}
-                    value={editingOffice.client.companyEmail}
-                    onChange={onClientDataChange}
+                    width={300}
                 />
                 <InputNumber
                     label={'Number'}
@@ -46,16 +34,33 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange}) => {
                     onChange={onClientDataChange}
                 />
                 <InputText
+                    type={'phone'}
+                    label={'Phone'}
+                    id={'companyPhone'}
+                    value={editingOffice.client.phoneNumber}
+                    onChange={onClientDataChange}
+                    width={300}
+                />
+                <InputText
+                    type={'mail'}
+                    label={'Email'}
+                    id={'companyEmail'}
+                    value={editingOffice.client.companyEmail}
+                    onChange={onClientDataChange}
+                    width={300}
+                />
+                <InputText
                     type={'text'}
                     label={'Address'}
                     id={'companyAddress'}
                     value={editingOffice.client.companyAddress}
                     onChange={onClientDataChange}
                     placeholder={'Street, postcode, country'}
+                    width={300}
                 />
             </div>
 
-            <Header size={'small'} margin={'1.5'}>Company Representative</Header>
+            <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Company Representative</Header>
             <div className={representativeDataContainer}>
                 <InputText
                     type={'text'}
@@ -77,12 +82,13 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange}) => {
                     id={'representativeEmail'}
                     value={editingOffice.client.representativeEmail}
                     onChange={onClientDataChange}
+                    width={300}
                 />
             </div>
 
             {editingOffice.status === 'Unavailable' && (
                 <>
-                    <Header size={'small'} margin={'1.5'}>Contract</Header>
+                    <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Contract</Header>
                     <div className={clientContractContainer}>
                         <InputDate
                             label={'From'}
@@ -99,8 +105,9 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange}) => {
                     </div>
                 </>
             )}
-            
-
+            <Button onClick={submitForm}>
+                Submit
+            </Button>
         </div>
     )
 }

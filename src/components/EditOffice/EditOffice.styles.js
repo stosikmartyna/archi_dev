@@ -1,7 +1,13 @@
 import { css } from 'emotion';
 
-export const container = css({
+export const flexContainer = css({
     display: 'flex',
+})
+
+export const container = css({
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
 })
 
 export const formContainer = css({
@@ -17,14 +23,22 @@ export const inputsContainer = css({
     width: '640px',
 })
 
+export const inputsContainerLarge = css({
+    display: 'flex',
+    flexWrap: 'wrap',
+    margin: '0 auto',
+    width: '800px',
+})
+
 export const statusContainer = css({
     display: 'flex',
-    margin: '0 auto 1rem'
+    margin: '0 auto 1rem',
+    width: '640px',
 })
 
 export const clientContainer = css({
-    marginTop: '1.5rem',
-    width: '640px',
+    margin: '0 auto 1.5rem',
+    width: '50%',
 })
 
 export const companyDataContainer = css({
