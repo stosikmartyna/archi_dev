@@ -37,18 +37,18 @@ export const table = css({
     boxShadow: `0 0 10px ${colors.foggySkyLight}`,
     color: colors.nightSkyDark,
     margin: '0 auto 2rem',
-    width: '70%',
+    width: '95%',
 
     '& th': {
         backgroundColor: colors.foggySkyLight,
         fontFamily: 'Montserrat',
         lineHeight: '2',
-        padding: '.5rem 0 .5rem 1rem',
+        padding: '.5rem 1rem',
     },
 
     '& td': {
         border: `1px solid ${colors.foggySkyLight}`,
-        padding: '.5rem 0',
+        padding: '.5rem .2rem',
         textAlign: 'center',
     },
 

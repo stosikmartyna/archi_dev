@@ -51,14 +51,15 @@ export const OfficesList = () => {
                         <th>Price</th>
                         <th>Status</th>
                         <th>Type</th>
-                        <th>Action</th>
                         {isTableExtended && (
                             <>
-                                <th>Name</th>
+                                <th>Company name</th>
+                                <th>Representative name</th>
                                 <th>Phone</th>
-                                <th>Contract</th>
+                                <th>Email</th>
                             </>
                         )}
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,7 +72,15 @@ export const OfficesList = () => {
                                 <td>{office.location}</td>
                                 <td>{office.price}</td>
                                 <td>{office.status}</td>
-                                <td>{office.type}</td>   
+                                <td>{office.type}</td>  
+                                {isTableExtended && (
+                                    <> 
+                                        <td>{office.client.companyName}</td>
+                                        <td>{office.client.representativeName}</td>
+                                        <td>{office.client.representativePhone}</td>
+                                        <td>{office.client.representativeEmail}</td>
+                                    </>
+                                )}
                                 <td>
                                     <button 
                                         onClick={() => handleEditButtonClick(office.key)} 
