@@ -25,13 +25,7 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange, submitF
                     decimalScale={0}
                     value={editingOffice.client.companyNumber}
                     onChange={onClientDataChange}
-                />
-                <InputText
-                    type={'text'}
-                    label={'Type'}
-                    id={'companyType'}
-                    value={editingOffice.client.companyType}
-                    onChange={onClientDataChange}
+                    width={300}
                 />
                 <InputText
                     type={'phone'}
@@ -58,6 +52,14 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange, submitF
                     placeholder={'Street, postcode, country'}
                     width={300}
                 />
+                <InputText
+                    type={'text'}
+                    label={'Type'}
+                    id={'companyType'}
+                    value={editingOffice.client.companyType}
+                    onChange={onClientDataChange}
+                    width={300}
+                />
             </div>
 
             <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Company Representative</Header>
@@ -68,6 +70,7 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange, submitF
                     id={'representativeName'}
                     value={editingOffice.client.representativeName}
                     onChange={onClientDataChange}
+                    width={300}
                 />
                 <InputText
                     type={'phone'}
@@ -75,6 +78,7 @@ export const EditOfficeClientData = ({editingOffice, onClientDataChange, submitF
                     id={'representativePhone'}
                     value={editingOffice.client.representativePhone}
                     onChange={onClientDataChange}
+                    width={300}
                 />
                 <InputText
                     type={'mail'}

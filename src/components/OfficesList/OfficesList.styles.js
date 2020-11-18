@@ -37,7 +37,7 @@ export const table = css({
     boxShadow: `0 0 10px ${colors.foggySkyLight}`,
     color: colors.nightSkyDark,
     margin: '0 auto 2rem',
-    width: '95%',
+    width: '80%',
 
     '& th': {
         backgroundColor: colors.foggySkyLight,

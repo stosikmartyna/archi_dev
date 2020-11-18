@@ -53,10 +53,8 @@ export const OfficesList = () => {
                         <th>Type</th>
                         {isTableExtended && (
                             <>
-                                <th>Company name</th>
-                                <th>Representative name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
+                                <th>Company</th>
+                                <th>Representative</th>
                             </>
                         )}
                         <th>Action</th>
@@ -77,8 +75,6 @@ export const OfficesList = () => {
                                     <> 
                                         <td>{office.client.companyName}</td>
                                         <td>{office.client.representativeName}</td>
-                                        <td>{office.client.representativePhone}</td>
-                                        <td>{office.client.representativeEmail}</td>
                                     </>
                                 )}
                                 <td>
