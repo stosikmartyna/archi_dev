@@ -1,4 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ArchiDev
+
+## About project
+
+This application was created to develop my skills as frontend developer.
+Used technologies:  
+- React library,
+- React Router Dom, 
+- Firebase,
+- Emotion CSS library.
+
+## Screenshots:
+
+### Login page
+Sign in to the application to start using ArchiDev app. 
+<br/><br/>
+<kbd>
+    ![screenshots](/readme_img/1.png?raw=true "Screenshot") 
+</kbd>
+
+### New office
+Add new office data to remote database. 
+<br/><br/>
+<kbd>
+    ![screenshots](/readme_img/2.png?raw=true "Screenshot")
+</kbd>
+
+### Offices
+All data introduced by user are displayed in the table.
+<br/><br/>
+<kbd>
+    ![screenshots](/readme_img/3.png?raw=true "Screenshot")
+</kbd>
+
+### Edit office
+Edit single office to update information in database.
+<br/><br/>
+<kbd>
+    ![screenshots](/readme_img/4.png?raw=true "Screenshot")
+</kbd>
+<br/><br/>
+Extended form for reserved and unavailable statuses.
+<br/><br/>
+<kbd>
+    ![screenshots](/readme_img/5.png?raw=true "Screenshot")
+</kbd>
 
 ## Available Scripts
 
