@@ -31,11 +31,13 @@ export const UserAuthSignUp = ({ setForm }) => {
                 id={'email'}
                 label={'Email'}
                 type={'text'}
+                width={220}
             />
             <InputText 
                 id={'password'}
                 label={'Password'}
                 type={'password'}
+                width={220}
             />
             <Button type={'submit'}>
                 Sign Up
