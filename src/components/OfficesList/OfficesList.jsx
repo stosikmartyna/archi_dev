@@ -90,7 +90,7 @@ export const OfficesList = () => {
                     })}
                 </tbody>            
             </table>
-            {isFetching && <Spinner />}
+            {isFetching && isDataEmpty && <Spinner />}
             {!isFetching && isDataEmpty && (
                 <span className={noDataInfo}>
                     No data has been found
