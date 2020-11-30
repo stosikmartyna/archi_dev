@@ -13,13 +13,25 @@ const spin = keyframes`
     }
 `
 
-export const spinner = css({
+export const spinnerContainer = css ({
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    bottom: 0,
+    left: 0,
+    position: 'fixed',
+    right: 0,
+    top: 0,
+    zIndex: 2,
+})
+
+export const spinner = css ({
     animation: `${spin} 1s linear infinite`,
-    border: `2px solid ${colors.foggySkyLight}`,
+    border: '3px solid transparent',
     borderTopColor: colors.grayishBlue,
     borderBottomColor: colors.grayishBlue,
     borderRadius: '50%',
-    height: '70px',
-    margin: '1.5rem auto 0',
-    width: '70px',
+    height: '100px',
+    left: 'calc(50% - 50px)',
+    position: 'absolute',
+    top: 'calc(50% - 50px)',
+    width: '100px',
 })
