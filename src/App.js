@@ -6,8 +6,8 @@ import { Navbar } from './components/Navbar/Navbar';
 import { NewOfficeForm } from './components/NewOfficeForm/NewOfficeForm';
 import { OfficesList } from './components/OfficesList/OfficesList';
 import { UserAuth } from './components/UserAuth/UserAuth';
-import { Header } from './uiComponents/Header';
 import { EditOffice } from './components/EditOffice/EditOffice';
+import { Dashboard } from './components/Dashboard/Dashboard';
 import './App.css';
 
 export const App = () => {
@@ -18,7 +18,7 @@ export const App = () => {
       {user && <Navbar user={user} />}
       <Switch>
         <Route exact path={ROUTES.HOME}>
-          {user ? <Header size={'medium'} margin={'1.5'}>ArchiDev</Header> : <Redirect to={ROUTES.SIGN_IN} />}
+          {user ? <Dashboard /> : <Redirect to={ROUTES.SIGN_IN} />}
         </Route>
         <Route path={ROUTES.NEW_OFFICE}>
           {user ? <NewOfficeForm /> : <Redirect to={ROUTES.SIGN_IN} />}

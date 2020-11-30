@@ -6,6 +6,8 @@ export const useOffices = () => {
     const [isFetching, setIsFetching] = useState(false);
     const [offices, setOffices] = useState([]);
     const [filteredOffices, setFilteredOffices] = useState([]);
+    const [statistics, setStatistics] = useState(undefined);
+
     const {user} = useContext(AuthContext);
 
     const postFormValues = async (values) => {
@@ -45,6 +47,14 @@ export const useOffices = () => {
 
             const filteredData = data.filter(data => data.status === defaultFilter);
             setFilteredOffices(filteredData);
+
+            setStatistics({
+                availableOffices: data.filter(office => office.status === 'Available').length,
+                unavailableOffices: data.filter(office => office.status === 'Unavailable').length,
+                reservedOffices: data.filter(office => office.status === 'Reserved').length, 
+                totalValue: data.map(office => office.price).reduce((acc, next) => acc + next),
+                totalArea: data.map(office => office.area).reduce((acc, next) => acc + next),
+            })
         } catch (err) {
             console.warn(err.message);
         } finally {
@@ -56,6 +66,7 @@ export const useOffices = () => {
         isFetching,
         offices,
         filteredOffices,
+        statistics,
         postFormValues,
         getOffices,
         filterOffices: setFilteredOffices,

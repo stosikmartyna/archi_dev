@@ -57,7 +57,7 @@ export const NewOfficeForm = () => {
             && inputsValues.area.trim() !== ''
             && inputsValues.location !== ''
             && inputsValues.price.trim() !== ''
-            && inputsValues.type === 'Open Space' || 'Shared offices'
+            && (inputsValues.type === 'Open Space' || 'Shared offices')
             && (inputsValues.type === 'Shared offices' && inputsValues.officesNo.trim() !== '')
 
         setIsFormSubmitted(true);

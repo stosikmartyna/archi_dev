@@ -27,7 +27,7 @@ export const EditOffice = () => {
             && editingOffice.area.trim() !== ''
             && editingOffice.location !== ''
             && editingOffice.price.trim() !== ''
-            && editingOffice.type === 'Open Space' || 'Shared offices'
+            && (editingOffice.type === 'Open Space' || 'Shared offices')
             && (editingOffice.type === 'Shared offices' && editingOffice.officesNo.trim() !== '')
         
         setIsFormSubmitted(true);

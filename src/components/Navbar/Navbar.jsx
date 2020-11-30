@@ -18,7 +18,7 @@ export const Navbar = () => {
         <div className={navbar}>
             <div>
                 <Link to={ROUTES.HOME} className={navbarLink}>
-                    Home
+                    Dashboard
                 </Link>
                 <Link to={ROUTES.NEW_OFFICE} className={navbarLink}>
                     New Office
