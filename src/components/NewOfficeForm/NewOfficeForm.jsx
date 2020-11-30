@@ -53,10 +53,12 @@ export const NewOfficeForm = () => {
     const submitForm = (event) => {
         event.preventDefault();
         const isFormValid = inputsValues.id.trim() !== ''
+            && inputsValues.floor.trim() !== ''
             && inputsValues.area.trim() !== ''
-            && inputsValues.type !== ''
             && inputsValues.location !== ''
             && inputsValues.price.trim() !== ''
+            && inputsValues.type === 'Open Space' || 'Shared offices'
+            && (inputsValues.type === 'Shared offices' && inputsValues.officesNo.trim() !== '')
 
         setIsFormSubmitted(true);
         isFormValid && postFormValues(inputsValues) && clearForm();
