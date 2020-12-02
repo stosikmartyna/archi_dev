@@ -17,21 +17,6 @@ export const container = css({
     },
 })
 
-export const appHeader = css({
-    color: '#3e4654',
-    fontFamily: 'Montserrat',
-    fontSize: '5rem',
-    marginTop: '6rem',
-    position: 'absolute',
-    textAlign: 'center',
-    width: '100%',
-    zIndex: 1,      
-    
-    '& span': {
-        color: colors.grayishBlue,
-    }
-})
-
 export const authForm = css({
     alignItems: 'center',
     display: 'flex',

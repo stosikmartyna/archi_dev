@@ -1,18 +1,6 @@
 import { css } from 'emotion';
 import { colors } from '../../constants/colors';
 
-export const appHeader = css({
-    color: '#3e4654',
-    fontFamily: 'Montserrat',
-    fontSize: '3rem',
-    margin: '1rem 0',
-    textAlign: 'center',
-    
-    '& span': {
-        color: colors.grayishBlue,
-    }
-})
-
 export const boxes = css ({
     display: 'flex',
     flexWrap: 'wrap',

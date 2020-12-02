@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useOffices } from '../../hooks/useOffices';
-import { appHeader, boxes, officesBoxContent, officesBoxStatuses, officesBoxStats, boxValue } from './Dashboard.styles';
 import { Spinner } from '../../components/Spinner/Spinner';
-import { cx } from 'emotion';
 import { DashboardBox } from './DashboardBox';
+import { AppLogo } from '../AppLogo/AppLogo';
+import { cx } from 'emotion';
+import { boxes, officesBoxContent, officesBoxStatuses, officesBoxStats, boxValue } from './Dashboard.styles';
 
 export const Dashboard = () => {
     const {getOffices, statistics, isFetching} = useOffices();
@@ -15,10 +16,7 @@ export const Dashboard = () => {
     return (
         <>
             {isFetching && <Spinner />}
-            <h1 className={appHeader}>
-                Archi
-                <span>Dev</span>
-            </h1>
+            <AppLogo />
             <div className={boxes}>
                 <DashboardBox header={'Offices'}>
                     <div className={officesBoxContent}>
