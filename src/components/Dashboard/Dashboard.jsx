@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useOffices } from '../../hooks/useOffices';
-import { Header } from '../../uiComponents/Header';
-import { appHeader, boxes, boxContainer } from './Dashboard.styles';
+import { appHeader, boxes, officesBoxContent, officesBoxStatuses, officesBoxStats, boxValue } from './Dashboard.styles';
 import { Spinner } from '../../components/Spinner/Spinner';
+import { cx } from 'emotion';
+import { DashboardBox } from './DashboardBox';
 
 export const Dashboard = () => {
     const {getOffices, statistics, isFetching} = useOffices();
@@ -19,21 +20,29 @@ export const Dashboard = () => {
                 <span>Dev</span>
             </h1>
             <div className={boxes}>
-                <div className={boxContainer}>
-                    <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Offices</Header>
-                    <p>Available {statistics?.availableOffices}</p>
-                    <p>Unavailable {statistics?.unavailableOffices}</p>
-                    <p>Reserved {statistics?.reservedOffices}</p>
-                </div>
-                <div className={boxContainer}>
-                    <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Total value of offices</Header>
-                </div>
-                <div className={boxContainer}>
-                    <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Total floor area</Header>
-                </div>
-                <div className={boxContainer}>
-                    <Header size={'small'} margin={'1.5'} fontWeight={'bolder'}>Floors</Header>
-                </div>
+                <DashboardBox header={'Offices'}>
+                    <div className={officesBoxContent}>
+                        <div className={officesBoxStatuses}>
+                            <span>Available</span> 
+                            <span>Unavailable</span>
+                            <span>Reserved</span>
+                        </div>
+                        <div className={cx(officesBoxStatuses, officesBoxStats)}>
+                            <span>{statistics?.availableOffices}</span>
+                            <span>{statistics?.unavailableOffices}</span>
+                            <span>{statistics?.reservedOffices}</span>
+                        </div>
+                    </div>
+                </DashboardBox>
+                <DashboardBox header={'Total value of offices'}>
+                    <span className={boxValue}>£ {statistics?.totalValue}</span>
+                </DashboardBox>
+                <DashboardBox header={'Total floor area'}>
+                    <span className={boxValue}>{statistics?.totalArea} (m²)</span>
+                </DashboardBox>
+                <DashboardBox header={'Floors'}>
+                    <span className={boxValue}>52</span>
+                </DashboardBox>
             </div>           
         </>
     )

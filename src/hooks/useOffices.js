@@ -52,8 +52,8 @@ export const useOffices = () => {
                 availableOffices: data.filter(office => office.status === 'Available').length,
                 unavailableOffices: data.filter(office => office.status === 'Unavailable').length,
                 reservedOffices: data.filter(office => office.status === 'Reserved').length, 
-                totalValue: data.map(office => office.price).reduce((acc, next) => acc + next),
-                totalArea: data.map(office => office.area).reduce((acc, next) => acc + next),
+                totalValue: data.map(office => Number(office.price)).reduce((acc, next) => acc + next),
+                totalArea: data.map(office => Number(office.area)).reduce((acc, next) => acc + next),
             })
         } catch (err) {
             console.warn(err.message);
