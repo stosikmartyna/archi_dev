@@ -8,6 +8,7 @@ import { OfficesList } from './components/OfficesList/OfficesList';
 import { UserAuth } from './components/UserAuth/UserAuth';
 import { EditOffice } from './components/EditOffice/EditOffice';
 import { Dashboard } from './components/Dashboard/Dashboard';
+import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import './App.css';
 
 export const App = () => {
@@ -32,6 +33,7 @@ export const App = () => {
         <Route path={ROUTES.SIGN_IN}>
           {!user ? <UserAuth /> : <Redirect to={ROUTES.HOME} />}
         </Route>
+        <Route component={PageNotFound} />
       </Switch>
     </>
   );
